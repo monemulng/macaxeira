@@ -1,1 +1,1 @@
-Colocar toda a documentação nessa pasta
+Colocar toda a documentação nessa pasta.
