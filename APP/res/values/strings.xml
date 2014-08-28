@@ -4,8 +4,13 @@
     <string name="app_name">Macaxeira</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_tela_garconete">TelaGarconete</string>
     <string name="title_activity_tela_sanduiches">TelaSanduiches</string>
     <string name="title_activity_tela_batata">TelaBatata</string>
+    <string name="mesa">MESA:</string>
+    <string name="img1">Imagem1</string>
+    <string name="img2">Imagem2</string>
+    <string name="bt3">Imagem3</string>
+    <string name="Mesa">"Mesa: "</string>
+    <string name="Codigo">"Código: "</string>
 
 </resources>
