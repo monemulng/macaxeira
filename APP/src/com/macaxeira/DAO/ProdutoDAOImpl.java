@@ -17,7 +17,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 	public void createProduto(String nome, int idCategoria) {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
-		db.execSQL("INSERT INTO produto (nome, categoria_id)" +
+		db.execSQL("INSERT INTO produto (nome, categoria_id) " +
 				   "VALUES ('" + nome + "', " + idCategoria + ")");
 	}
 	
@@ -52,11 +52,14 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 		
 		db.execSQL("UPDATE produto " +
 				   "SET nome='" + nomeAlt + "', categoria_id=" + idCategoriaAlt + " " +
-				   "WHERE _id='" + id + "'");
+				   "WHERE _id=" + id);
 	}
 
 	public void deleteProduto(int id) {
+		SQLiteDatabase db = helper.getWritableDatabase();
 		
+		db.execSQL("DELETE FROM produto " +
+				   "WHERE _id=" + id);
 	}
 	
 	public List<Produto> buscarProdutoPorCategoria(int id) {
