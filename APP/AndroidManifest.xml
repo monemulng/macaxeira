@@ -23,6 +23,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.macaxeira.android.TelaGarconete"
+            android:label="@string/title_activity_tela_garconete" >
+        </activity>
+        <activity
+            android:name="com.macaxeira.android.TelaSanduiches"
+            android:label="@string/title_activity_tela_sanduiches" >
+        </activity>
+        <activity
+            android:name="com.macaxeira.android.TelaBatata"
+            android:label="@string/title_activity_tela_batata" >
+        </activity>
     </application>
 
 </manifest>
