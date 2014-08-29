@@ -1,11 +1,11 @@
 package com.macaxeira.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.macaxeira.model.Ingrediente;
 import com.macaxeira.model.Produto;
 import com.macaxeira.util.DatabaseHelper;
 import com.macaxeira.util.MyApp;
@@ -22,7 +22,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 	}
 	
 	public List<Produto> readProduto() {
-		List<Produto> listaProd = null;
+		List<Produto> listaProd = new ArrayList<Produto>();
 		SQLiteDatabase db = helper.getReadableDatabase();
 		
 		Cursor cursor = db.rawQuery("SELECT * FROM produto", null);

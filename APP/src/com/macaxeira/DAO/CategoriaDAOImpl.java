@@ -1,5 +1,6 @@
 package com.macaxeira.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.database.Cursor;
@@ -22,7 +23,7 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 	}
 
 	public List<Categoria> readCategoria() {
-		List<Categoria> listaCat = null;
+		List<Categoria> listaCat = new ArrayList<Categoria>();
 		SQLiteDatabase db = helper.getReadableDatabase();
 		
 		Cursor cursor = db.rawQuery("SELECT * FROM categoria", null);

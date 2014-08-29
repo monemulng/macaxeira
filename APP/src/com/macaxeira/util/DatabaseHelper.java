@@ -2,7 +2,6 @@ package com.macaxeira.util;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
@@ -25,6 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 										  "nome TEXT NOT NULL, " +
 										  "categoria_id INTEGE NOT NULL, " +
 										  "FOREIGN KEY(categoria_id) REFERENCES categoria(_id))");
+		
 	}
 
 	@Override
