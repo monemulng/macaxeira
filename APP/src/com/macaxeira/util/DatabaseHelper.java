@@ -24,7 +24,22 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 										  "nome TEXT NOT NULL, " +
 										  "categoria_id INTEGE NOT NULL, " +
 										  "FOREIGN KEY(categoria_id) REFERENCES categoria(_id))");
-		
+		db.execSQL("INSERT INTO categoria (nome) " +
+				   "VALUES ('Sanduiches') " +
+				   "INSERT INTO categoria (nome) " +
+				   "VALUES ('Batatas')");
+		db.execSQL("INSERT INTO produto (nome, categoria_id) " +
+				   "VALUES ('Hamburger', 1) " +
+				   "INSERT INTO produto (nome, categoria_id) " +
+				   "VALUES ('Frango', 1) " +
+				   "INSERT INTO produto (nome, categoria_id) " +
+				   "VALUES ('Picanha', 1) " +
+				   "INSERT INTO produto (nome, categoria_id) " +
+				   "VALUES ('Batata P', 2) " +
+				   "INSERT INTO produto (nome, categoria_id) " +
+				   "VALUES ('Batata M', 2) " +
+				   "INSERT INTO produto (nome, categoria_id) " +
+				   "VALUES ('Batata G', 2)");
 	}
 
 	@Override
