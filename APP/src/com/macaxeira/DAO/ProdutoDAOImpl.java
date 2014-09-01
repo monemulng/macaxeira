@@ -48,12 +48,12 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 		return listaProd;
 	}
 	
-	public void updateProduto(Produto oldProd, Produto newProd) {
+	public void updateProduto(Produto prod) {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
 		db.execSQL("UPDATE produto " +
-				   "SET nome='" + newProd.getNome() + "', categoria_id=" + newProd.getCodCategoria() + " " +
-				   "WHERE _id=" + oldProd.getCodProduto());
+				   "SET nome='" + prod.getNome() + "', categoria_id=" + prod.getCodCategoria() + " " +
+				   "WHERE _id=" + prod.getCodProduto());
 	}
 
 	public void deleteProduto(Produto prod) {

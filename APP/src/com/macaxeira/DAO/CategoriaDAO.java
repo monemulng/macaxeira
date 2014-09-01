@@ -11,7 +11,7 @@ public interface CategoriaDAO {
 	
 	public List<Categoria> readCategoria();
 	
-	public void updateCategoria(Categoria oldCateg, Categoria newCateg);
+	public void updateCategoria(Categoria categ);
 	
 	public void deleteCategoria(Categoria categ);
 

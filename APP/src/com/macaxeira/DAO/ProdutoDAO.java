@@ -17,7 +17,7 @@ public interface ProdutoDAO {
 	
 	public List<Produto> readProduto();
 	
-	public void updateProduto(Produto oldProd, Produto newProd);
+	public void updateProduto(Produto prod);
 	
 	public void deleteProduto(Produto prod);
 	

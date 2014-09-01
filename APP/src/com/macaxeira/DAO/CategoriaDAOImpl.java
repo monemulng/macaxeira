@@ -48,12 +48,12 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 		return listaCat;
 	}
 
-	public void updateCategoria(Categoria oldCateg, Categoria newCateg) {
+	public void updateCategoria(Categoria categ) {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
 		db.execSQL("UPDATE categoria " +
-				   "SET nome='" + newCateg.getNome() + " " +
-				   "WHERE _id=" + oldCateg.getCodCategoria() );
+				   "SET nome='" + categ.getNome() + " " +
+				   "WHERE _id=" + categ.getCodCategoria() );
 		
 	}
 
