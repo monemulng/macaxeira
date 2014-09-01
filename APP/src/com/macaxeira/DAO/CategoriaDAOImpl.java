@@ -15,11 +15,11 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 	
 	DatabaseHelper helper = new DatabaseHelper(MyApp.getAppContext());
 
-	public void createCategoria(String nome, int idCategoria) {
+	public void createCategoria(Categoria categ) {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
 		db.execSQL("INSERT INTO categoria (nome) " +
-				   "VALUES ('" + nome + "')");
+				   "VALUES ('" + categ.getNome() + "')");
 	}
 
 	public List<Categoria> readCategoria() {
@@ -48,20 +48,20 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 		return listaCat;
 	}
 
-	public void updateCategoria(int id, String nomeAlt, int idCategoriaAlt) {
+	public void updateCategoria(Categoria oldCateg, Categoria newCateg) {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
 		db.execSQL("UPDATE categoria " +
-				   "SET nome='" + nomeAlt + " " +
-				   "WHERE _id=" + id );
+				   "SET nome='" + newCateg.getNome() + " " +
+				   "WHERE _id=" + oldCateg.getCodCategoria() );
 		
 	}
 
-	public void deleteCategoria(int id) {
+	public void deleteCategoria(Categoria categ) {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
 		db.execSQL("DELETE FROM categoria " +
-				   "WHERE _id=" + id);
+				   "WHERE _id=" + categ.getCodCategoria());
 	}
 	
 }

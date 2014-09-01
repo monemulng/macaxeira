@@ -6,6 +6,7 @@ public class Produto {
 
 	private String nome;
 	private int codProduto;
+	private int codCategoria;
 	private List<Ingrediente> ingredientes;
 	
 	public List<Ingrediente> getIngredientes() {
@@ -25,6 +26,12 @@ public class Produto {
 	}
 	public void setCodProduto(int codProduto) {
 		this.codProduto = codProduto;
+	}
+	public int getCodCategoria() {
+		return codCategoria;
+	}
+	public void setCodCategoria(int codCategoria) {
+		this.codCategoria = codCategoria;
 	}
 	
 }

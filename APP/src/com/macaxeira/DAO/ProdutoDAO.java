@@ -5,6 +5,7 @@ import java.util.List;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.macaxeira.model.Categoria;
 import com.macaxeira.model.Ingrediente;
 import com.macaxeira.model.Produto;
 import com.macaxeira.util.DatabaseHelper;
@@ -12,14 +13,14 @@ import com.macaxeira.util.MyApp;
 
 public interface ProdutoDAO {
 	
-	public void createProduto(String nome, int idCategoria);
+	public void createProduto(Produto prod);
 	
 	public List<Produto> readProduto();
 	
-	public void updateProduto(int id, String nomeAlt, int idCategoriaAlt);
+	public void updateProduto(Produto oldProd, Produto newProd);
 	
-	public void deleteProduto(int id);
+	public void deleteProduto(Produto prod);
 	
-	public List<Produto> buscarProdutoPorCategoria(int id);
+	public List<Produto> buscarProdutoPorCategoria(Categoria categ);
 
 }

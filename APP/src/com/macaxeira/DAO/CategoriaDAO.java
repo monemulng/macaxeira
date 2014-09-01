@@ -7,12 +7,12 @@ import com.macaxeira.model.Produto;
 
 public interface CategoriaDAO {
 
-	public void createCategoria(String nome, int idCategoria);
+	public void createCategoria(Categoria categ);
 	
 	public List<Categoria> readCategoria();
 	
-	public void updateCategoria(int id, String nomeAlt, int idCategoriaAlt);
+	public void updateCategoria(Categoria oldCateg, Categoria newCateg);
 	
-	public void deleteCategoria(int id);
+	public void deleteCategoria(Categoria categ);
 
 }
