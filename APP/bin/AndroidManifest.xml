@@ -29,7 +29,7 @@
             android:label="@string/title_activity_tela_sanduiches" >
         </activity>
         <activity
-            android:name="com.macaxeira.android.TelaBatata"
+            android:name="com.macaxeira.android.TelaProdutos"
             android:label="@string/title_activity_tela_batata" >
         </activity>
     </application>
