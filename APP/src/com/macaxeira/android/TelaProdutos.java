@@ -14,7 +14,7 @@ public class TelaProdutos extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_tela_batata);
+		setContentView(R.layout.activity_tela_produtos);
 		
 		int idCategoria = getIntent().getExtras().getInt("id");
 		
