@@ -17,13 +17,7 @@
         <activity
             android:name="com.macaxeira.android.MainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-       
         <activity
             android:name="com.macaxeira.android.TelaSanduiches"
             android:label="@string/title_activity_tela_sanduiches" >
@@ -31,6 +25,15 @@
         <activity
             android:name="com.macaxeira.android.TelaProdutos"
             android:label="@string/title_activity_tela_batata" >
+        </activity>
+        <activity
+            android:name="com.macaxeira.android.Splash"
+            android:label="@string/title_activity_splash" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

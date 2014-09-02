@@ -12,5 +12,6 @@
     <string name="bt3">Imagem3</string>
     <string name="Mesa">"Mesa: "</string>
     <string name="Codigo">"Código: "</string>
+    <string name="title_activity_splash">Splash</string>
 
 </resources>
