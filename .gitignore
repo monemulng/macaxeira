@@ -12,3 +12,4 @@
 hs_err_pid*
 /APP/.project
 /APP/.classpath
+/APP/gen/com/macaxeira/android/R.java
