@@ -18,8 +18,13 @@ public class TelaProdutos extends Activity {
 		
 		int idCategoria = getIntent().getExtras().getInt("id");
 		
-		Categoria cat = new Categoria(idCategoria,"Batata");
+		String nomeCat;
+		if(idCategoria==1) nomeCat="Sanduiche";
+		else nomeCat="Batata";
+		
+		Categoria cat = new Categoria(idCategoria,nomeCat);
 		cat.setProdutos(prodDao.buscarProdutoPorCategoria(cat));
+		
 		
 		
 	}
