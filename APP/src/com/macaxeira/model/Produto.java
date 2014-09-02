@@ -34,4 +34,12 @@ public class Produto {
 		this.codCategoria = codCategoria;
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return nome;
+	}
+	
+	
+	
 }

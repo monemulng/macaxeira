@@ -3,16 +3,16 @@ package com.macaxeira.android;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import com.macaxeira.DAO.ProdutoDAO;
-import com.macaxeira.DAO.ProdutoDAOImpl;
+import com.macaxeira.mock.ProdutoDaoMock;
 import com.macaxeira.model.Categoria;
+import com.macaxeira.model.Produto;
 
 public class TelaProdutos extends Activity {
 	
 	ListView lista;
-	private ProdutoDAO prodDao = new ProdutoDAOImpl();
+	private ProdutoDaoMock prodDao = new ProdutoDaoMock();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +28,14 @@ public class TelaProdutos extends Activity {
 		Categoria cat = new Categoria(idCategoria,nomeCat);
 		cat.setProdutos(prodDao.buscarProdutoPorCategoria(cat));
 		
-		lista = (ListView) findViewById(R.id.listaprodutos);
-		lista = (ListView) cat.getProdutos();
 		
+		ArrayAdapter <Produto> filelist = null;
+		lista = (ListView) findViewById(R.id.listaprodutos);
+		
+		filelist = new ArrayAdapter<Produto>(this, android.R.layout.simple_list_item_1, cat.getProdutos());
+
+		lista.setAdapter(filelist);
+
 	}
 
 	@Override
