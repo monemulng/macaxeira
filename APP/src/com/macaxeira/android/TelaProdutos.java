@@ -41,7 +41,7 @@ public class TelaProdutos extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.tela_batata, menu);
+		getMenuInflater().inflate(R.menu.tela_produtos, menu);
 		return true;
 	}
 
