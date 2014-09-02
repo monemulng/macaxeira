@@ -64,14 +64,14 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 	}
 	
 	public List<Produto> buscarProdutoPorCategoria(Categoria categ) {
-		List<Produto> listaProd = null;
+		List<Produto> listaProd = new ArrayList<Produto>();
 		SQLiteDatabase db = helper.getReadableDatabase();
 		
-		Cursor cursor = db.rawQuery("SELECT nomeProduto FROM produto WHERE categoria_id=" + categ.getCodCategoria(), null);
+		Cursor cursor = db.rawQuery("SELECT nome FROM produto WHERE categoria_id=" + categ.getCodCategoria(), null);
 		
 		cursor.moveToFirst();
 		
-		for(int i = 0; i < cursor.getCount(); i++){
+		for(int i = 1; i < cursor.getCount(); i++){
 			String nomeProd = cursor.getString(1);
 			
 			Produto p = new Produto();

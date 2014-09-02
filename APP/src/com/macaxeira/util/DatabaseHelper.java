@@ -18,28 +18,28 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		Log.i("TESTE DE BANCO", "Entrou");
 		
-		db.execSQL("CREATE TABLE categoria (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+		db.execSQL("CREATE TABLE categoria ( _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 											"nome TEXT NOT NULL)");
-		db.execSQL("CREATE TABLE produto (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+		db.execSQL("CREATE TABLE produto ( _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 										  "nome TEXT NOT NULL, " +
-										  "categoria_id INTEGE NOT NULL, " +
+										  "categoria_id INTEGER NOT NULL, " +
 										  "FOREIGN KEY(categoria_id) REFERENCES categoria(_id))");
 		db.execSQL("INSERT INTO categoria (nome) " +
-				   "VALUES ('Sanduiches') " +
+				   "VALUES ('Sanduiches'); " +
 				   "INSERT INTO categoria (nome) " +
-				   "VALUES ('Batatas')");
+				   "VALUES ('Batatas'); ");
 		db.execSQL("INSERT INTO produto (nome, categoria_id) " +
-				   "VALUES ('Hamburger', 1) " +
+				   "VALUES ('Hamburger', 1); " +
 				   "INSERT INTO produto (nome, categoria_id) " +
-				   "VALUES ('Frango', 1) " +
+				   "VALUES ('Frango', 1); " +
 				   "INSERT INTO produto (nome, categoria_id) " +
-				   "VALUES ('Picanha', 1) " +
+				   "VALUES ('Picanha', 1); " +
 				   "INSERT INTO produto (nome, categoria_id) " +
-				   "VALUES ('Batata P', 2) " +
+				   "VALUES ('Batata P', 2); " +
 				   "INSERT INTO produto (nome, categoria_id) " +
-				   "VALUES ('Batata M', 2) " +
+				   "VALUES ('Batata M', 2); " +
 				   "INSERT INTO produto (nome, categoria_id) " +
-				   "VALUES ('Batata G', 2)");
+				   "VALUES ('Batata G', 2); ");
 	}
 
 	@Override
