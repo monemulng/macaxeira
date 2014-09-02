@@ -3,12 +3,15 @@ package com.macaxeira.android;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.ListView;
 
 import com.macaxeira.DAO.ProdutoDAO;
 import com.macaxeira.DAO.ProdutoDAOImpl;
 import com.macaxeira.model.Categoria;
 
 public class TelaProdutos extends Activity {
+	
+	ListView lista;
 	private ProdutoDAO prodDao = new ProdutoDAOImpl();
 	
 	@Override
@@ -25,7 +28,8 @@ public class TelaProdutos extends Activity {
 		Categoria cat = new Categoria(idCategoria,nomeCat);
 		cat.setProdutos(prodDao.buscarProdutoPorCategoria(cat));
 		
-		
+		lista = (ListView) findViewById(R.id.listaprodutos);
+		lista = (ListView) cat.getProdutos();
 		
 	}
 
