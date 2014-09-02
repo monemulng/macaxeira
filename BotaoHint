@@ -1,0 +1,5 @@
+Mantendo feedback do botao clicado mantendo o background transparente.
+use a função:
+android:background="?android:attr/selectableItemBackground"
+ps. esperando atualização do BD pra implementar.
+Glenda.
