@@ -40,6 +40,8 @@ public class Produto {
 		return nome;
 	}
 	
-	
+	public String toString() {
+		return nome;
+	}
 	
 }

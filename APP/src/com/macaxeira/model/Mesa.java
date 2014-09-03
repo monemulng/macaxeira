@@ -10,4 +10,8 @@ public class Mesa {
 	public void setCodMesa(int codMesa) {
 		this.codMesa = codMesa;
 	}
+	
+	public String toString() {
+		return nome;
+	}
 }
