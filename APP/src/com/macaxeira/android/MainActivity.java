@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
 			mudarParaTelaProd(1);
 		}
 		
-		if (v.getId() == R.id.batat) {
+		if (v.getId() == R.id.batata) {
 			mudarParaTelaProd(2);
 		}
 		

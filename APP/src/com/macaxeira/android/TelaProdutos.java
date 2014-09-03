@@ -36,6 +36,7 @@ public class TelaProdutos extends Activity {
 		filelist = new ArrayAdapter<Produto>(this, android.R.layout.simple_list_item_1, cat.getProdutos());
 
 		lista.setAdapter(filelist);
+		
 
 	}
 

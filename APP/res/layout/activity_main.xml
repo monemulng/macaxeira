@@ -32,62 +32,51 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="50dp" >
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal" >
 
         <ImageButton
             android:id="@+id/sanduba"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/icone_burger"
+            android:layout_marginRight="80dp"
+            android:background="?android:attr/selectableItemBackground"
             android:onClick="escolheCategoria"
             android:src="@drawable/icone_burger" />
 
         <ImageButton
-            android:id="@+id/batat"
+            android:id="@+id/batata"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/icone_batata"
+            android:background="?android:attr/selectableItemBackground"
             android:onClick="escolheCategoria"
             android:src="@drawable/icone_batata" />
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp" >
-
-        <TextView
-            android:id="@+id/codigo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Codigo"
-            android:layout_marginTop="40dp" />
-
-        <EditText
-            android:id="@+id/codigoNumero"
-            android:layout_width="114dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number"
-            android:layout_marginTop="40dp" />
+        android:layout_marginTop="150dp"
+        android:orientation="horizontal" >
 
         <SearchView
             android:id="@+id/lupa"
-            android:layout_width="wrap_content"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            >
-			
+            android:layout_weight="0.04"
+            android:iconifiedByDefault="false"
+            android:queryHint="Código" >
         </SearchView>
 
         <ImageButton
             android:id="@+id/imageButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/cesta50" 
-            android:src="@drawable/cesta50" />
-
+            android:layout_width="82dp"
+            android:layout_height="49dp"
+            android:layout_weight="0.01"
+            android:background="?android:attr/selectableItemBackground"
+            android:src="@drawable/cesta50"
+            android:layout_gravity="bottom" />
     </LinearLayout>
 
 </LinearLayout>
