@@ -1,5 +1,6 @@
 package com.macaxeira.util;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -19,27 +20,42 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 		Log.i("TESTE DE BANCO", "Entrou");
 		
 		db.execSQL("CREATE TABLE categoria ( _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-											"nome TEXT NOT NULL)");
+											"nome TEXT NOT NULL);");
 		db.execSQL("CREATE TABLE produto ( _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 										  "nome TEXT NOT NULL, " +
-										  "categoria_id INTEGER NOT NULL, " +
-										  "FOREIGN KEY(categoria_id) REFERENCES categoria(_id))");
-		db.execSQL("INSERT INTO categoria (nome) " +
-				   "VALUES ('Sanduiches'); " +
-				   "INSERT INTO categoria (nome) " +
-				   "VALUES ('Batatas'); ");
-		db.execSQL("INSERT INTO produto (nome, categoria_id) " +
-				   "VALUES ('Hamburger', 1); " +
-				   "INSERT INTO produto (nome, categoria_id) " +
-				   "VALUES ('Frango', 1); " +
-				   "INSERT INTO produto (nome, categoria_id) " +
-				   "VALUES ('Picanha', 1); " +
-				   "INSERT INTO produto (nome, categoria_id) " +
-				   "VALUES ('Batata P', 2); " +
-				   "INSERT INTO produto (nome, categoria_id) " +
-				   "VALUES ('Batata M', 2); " +
-				   "INSERT INTO produto (nome, categoria_id) " +
-				   "VALUES ('Batata G', 2); ");
+										  "categoria_id INTEGER, " +
+										  "FOREIGN KEY(categoria_id) REFERENCES categoria(_id));");
+		
+		ContentValues values1 = new ContentValues();
+		values1.put("nome", "Sanduíches");
+		db.insert("categoria", null, values1);
+		ContentValues values2 = new ContentValues();
+		values2.put("nome", "Batatas");
+		db.insert("categoria", null, values2);
+		ContentValues values3 = new ContentValues();
+		values3.put("nome", "Hamburger");
+		values3.put("categoria_id", 1);
+		db.insert("produto", null, values3);
+		ContentValues values4 = new ContentValues();
+		values4.put("nome", "Frango");
+		values4.put("categoria_id", 1);
+		db.insert("produto", null, values4);
+		ContentValues values5 = new ContentValues();
+		values5.put("nome", "Picanha");
+		values5.put("categoria_id", 1);
+		db.insert("produto", null, values5);
+		ContentValues values6 = new ContentValues();
+		values6.put("nome", "Batata P");
+		values6.put("categoria_id", 2);
+		db.insert("produto", null, values6);
+		ContentValues values7 = new ContentValues();
+		values7.put("nome", "Batata M");
+		values7.put("categoria_id", 2);
+		db.insert("produto", null, values7);
+		ContentValues values8 = new ContentValues();
+		values8.put("nome", "Batata G");
+		values8.put("categoria_id", 2);
+		db.insert("produto", null, values8);
 	}
 
 	@Override

@@ -19,14 +19,14 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
 		db.execSQL("INSERT INTO categoria (nome) " +
-				   "VALUES ('" + categ.getNome() + "')");
+				   "VALUES ('" + categ.getNome() + "');");
 	}
 
 	public List<Categoria> readCategoria() {
 		List<Categoria> listaCat = new ArrayList<Categoria>();
 		SQLiteDatabase db = helper.getReadableDatabase();
 		
-		Cursor cursor = db.rawQuery("SELECT * FROM categoria", null);
+		Cursor cursor = db.rawQuery("SELECT * FROM categoria;", null);
 		
 		cursor.moveToFirst();
 		
@@ -53,7 +53,7 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 		
 		db.execSQL("UPDATE categoria " +
 				   "SET nome='" + categ.getNome() + " " +
-				   "WHERE _id=" + categ.getCodCategoria() );
+				   "WHERE _id=" + categ.getCodCategoria() + ";");
 		
 	}
 
@@ -61,7 +61,7 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
 		db.execSQL("DELETE FROM categoria " +
-				   "WHERE _id=" + categ.getCodCategoria());
+				   "WHERE _id=" + categ.getCodCategoria() + ";");
 	}
 	
 }

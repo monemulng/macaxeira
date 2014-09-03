@@ -12,6 +12,6 @@ public class Mesa {
 	}
 	
 	public String toString() {
-		return nome;
+		return "Mesa" + codMesa;
 	}
 }

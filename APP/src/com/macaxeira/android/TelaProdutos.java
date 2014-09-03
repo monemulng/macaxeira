@@ -5,14 +5,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import com.macaxeira.mock.ProdutoDaoMock;
+
+import com.macaxeira.DAO.ProdutoDAO;
+import com.macaxeira.DAO.ProdutoDAOImpl;
 import com.macaxeira.model.Categoria;
 import com.macaxeira.model.Produto;
 
 public class TelaProdutos extends Activity {
 	
 	ListView lista;
-	private ProdutoDaoMock prodDao = new ProdutoDaoMock();
+	private ProdutoDAO prodDao = new ProdutoDAOImpl();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +29,6 @@ public class TelaProdutos extends Activity {
 		
 		Categoria cat = new Categoria(idCategoria,nomeCat);
 		cat.setProdutos(prodDao.buscarProdutoPorCategoria(cat));
-		
 		
 		ArrayAdapter <Produto> filelist = null;
 		lista = (ListView) findViewById(R.id.listaprodutos);
