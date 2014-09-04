@@ -13,5 +13,8 @@
     <string name="Mesa">"Mesa: "</string>
     <string name="Codigo">"Código: "</string>
     <string name="title_activity_splash">Splash</string>
+    <string name="preco">Preço:</string>
+    <string name="produto">Produto</string>
+    <string name="addProduto">+</string>
 
 </resources>
