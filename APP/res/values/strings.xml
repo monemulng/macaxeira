@@ -16,5 +16,6 @@
     <string name="preco">Preço:</string>
     <string name="produto">Produto</string>
     <string name="addProduto">+</string>
+    <string name="okProduto"> OK </string>
 
 </resources>

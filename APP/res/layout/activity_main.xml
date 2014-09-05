@@ -15,7 +15,7 @@
             android:id="@+id/mesa"
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_gravity="left"
+            android:layout_gravity="left|center_vertical"
             android:layout_weight="0.3"
             android:text="@string/Mesa"
             android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -23,8 +23,8 @@
         <EditText
             android:id="@+id/mesaNumero"
             android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|center_horizontal"
             android:layout_weight="0.7"
             android:ems="10"
             android:inputType="number" >
@@ -38,13 +38,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:orientation="horizontal" 
-        android:layout_weight="0.2">
+        android:layout_weight="0.4">
 
         <ImageButton
             android:id="@+id/sanduba"
             android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_height="match_parent"
+            android:layout_gravity="left|center_horizontal"
             android:layout_weight="0.5"
             android:background="?android:attr/selectableItemBackground"
             android:onClick="escolheCategoria"
@@ -53,8 +53,8 @@
         <ImageButton
             android:id="@+id/batata"
             android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|center_horizontal"
             android:layout_weight="0.5"
             android:background="?android:attr/selectableItemBackground"
             android:onClick="escolheCategoria"
@@ -64,7 +64,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="0.3"
+        android:layout_weight="0.4"
         android:orientation="horizontal" />
 
     <LinearLayout
@@ -72,13 +72,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:orientation="horizontal" 
-        android:layout_weight="0.05">
+        android:layout_weight="0.1">
 
         <SearchView
             android:id="@+id/lupa"
             android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_height="match_parent"
+            android:layout_gravity="left|bottom"
             android:layout_marginTop="40dp"
             android:layout_weight="0.6"
             android:iconifiedByDefault="false"
@@ -88,11 +88,12 @@
         <ImageButton
             android:id="@+id/imageButton3"
             android:layout_width="0dip"
-            android:layout_height="50dp"
-            android:layout_gravity="right"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|bottom"
             android:layout_weight="0.4"
             android:background="?android:attr/selectableItemBackground"
-            android:src="@drawable/cesta50" />
+            android:src="@drawable/cesta50"
+             />
     </LinearLayout>
 
 </LinearLayout>
