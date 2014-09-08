@@ -13,8 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.macaxeira.DAO.ProdutoDAO;
-import com.macaxeira.DAO.ProdutoDAOImpl;
+import com.macaxeira.DAO.CategoriaDAO;
+import com.macaxeira.DAO.CategoriaDAOImpl;
 import com.macaxeira.model.Categoria;
 import com.macaxeira.model.Produto;
 import com.macaxeira.util.MyApp;
@@ -23,27 +23,20 @@ public class TelaProdutos extends Activity {
 	
 	ListView lista;
 	//private int cod;
-	private ProdutoDAO prodDao = new ProdutoDAOImpl();
+	private CategoriaDAO catDao= new CategoriaDAOImpl();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tela_produtos);
 		
-		int idCategoria = getIntent().getExtras().getInt("id");
-		
-		String nomeCat;
-		if(idCategoria==1) nomeCat="Sanduiche";
-		else nomeCat="Batata";
-		
-		Categoria cat = new Categoria(idCategoria,nomeCat);
-		cat.setProdutos(prodDao.buscarProdutoPorCategoria(cat));
-		
+		int idCategoria = Integer.parseInt(getIntent().getExtras().getString("id"));
+		Categoria cat = catDao.buscarCategoriaPorId(idCategoria);
+
+
 		ArrayAdapter <Produto> filelist = null;
 		lista = (ListView) findViewById(R.id.listaprodutos);
-		
 		filelist = new ArrayAdapter<Produto>(this, android.R.layout.simple_list_item_1, cat.getProdutos());
-
 		lista.setAdapter(filelist);
 		
 		lista.setOnItemClickListener(new OnItemClickListener() {
@@ -54,7 +47,7 @@ public class TelaProdutos extends Activity {
 				// TODO Auto-generated method stub
 				Produto p = (Produto) filelist.getItemAtPosition(position);
 				
-				Toast.makeText(MyApp.getAppContext(), "você clicou em: " + p, Toast.LENGTH_LONG).show();
+				Toast.makeText(MyApp.getAppContext(), "vocÃª clicou em: " + p, Toast.LENGTH_LONG).show();
 			}
 		});
 		
