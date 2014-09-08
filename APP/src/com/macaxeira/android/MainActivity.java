@@ -20,20 +20,8 @@ public class MainActivity extends Activity {
 	}
 
 	public void escolheCategoria(View v) {		
-		
-		if (v.getId() == R.id.sanduba) {
-			mudarParaTelaProd(1);
-		}
-		
-		if (v.getId() == R.id.batata) {
-			mudarParaTelaProd(2);
-		}
-		
-
-	}
-	private void mudarParaTelaProd(int idCatDoProd){
 		Intent intent = new Intent(MainActivity.this, TelaProdutos.class);
-		intent.putExtra("id", idCatDoProd);
+		intent.putExtra("id", v.getContentDescription());
 		startActivity(intent);
 	}
 }
