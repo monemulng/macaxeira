@@ -7,8 +7,6 @@ import com.macaxeira.model.Categoria;
 
 public class CategoriaDaoMock implements CategoriaDAO {	
 	
-	
-	
 	@Override
 	public void createCategoria(Categoria categ) {		
 				
@@ -43,6 +41,12 @@ public class CategoriaDaoMock implements CategoriaDAO {
 	public void deleteCategoria(Categoria categ) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Categoria buscarCategoriaPorId(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

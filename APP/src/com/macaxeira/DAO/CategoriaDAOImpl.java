@@ -6,6 +6,7 @@ import java.util.List;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.macaxeira.DAO.ProdutoDAOImpl;
 import com.macaxeira.model.Categoria;
 import com.macaxeira.model.Produto;
 import com.macaxeira.util.DatabaseHelper;
@@ -14,6 +15,7 @@ import com.macaxeira.util.MyApp;
 public class CategoriaDAOImpl implements CategoriaDAO {
 	
 	DatabaseHelper helper = new DatabaseHelper(MyApp.getAppContext());
+	private ProdutoDAOImpl prodDao = new ProdutoDAOImpl();
 
 	public void createCategoria(Categoria categ) {
 		SQLiteDatabase db = helper.getWritableDatabase();
@@ -63,5 +65,25 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 		db.execSQL("DELETE FROM categoria " +
 				   "WHERE _id=" + categ.getCodCategoria() + ";");
 	}
-	
+
+	@Override
+	public Categoria buscarCategoriaPorId(int id) {
+		SQLiteDatabase db = helper.getReadableDatabase();
+		
+		Categoria categ = new Categoria();
+		
+		categ.setCodCategoria(id);
+		
+		Cursor cursor = db.rawQuery("SELECT * FROM categoria WHERE _id=" + id + ";" , null);
+		
+		cursor.moveToFirst();
+		
+		String nomeCateg = cursor.getString(1);
+		categ.setNome(nomeCateg);
+		categ.setProdutos(prodDao.buscarProdutoPorCategoria(categ));
+		
+		cursor.close();
+		
+		return categ;
+	}
 }

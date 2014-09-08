@@ -14,5 +14,7 @@ public interface CategoriaDAO {
 	public void updateCategoria(Categoria categ);
 	
 	public void deleteCategoria(Categoria categ);
+	
+	public Categoria buscarCategoriaPorId (int id);
 
 }
