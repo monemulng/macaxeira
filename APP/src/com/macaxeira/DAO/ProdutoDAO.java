@@ -22,5 +22,7 @@ public interface ProdutoDAO {
 	public void deleteProduto(Produto prod);
 	
 	public List<Produto> buscarProdutoPorCategoria(Categoria categ);
+	
+	public Produto buscarProdutoPorId(int id);
 
 }
