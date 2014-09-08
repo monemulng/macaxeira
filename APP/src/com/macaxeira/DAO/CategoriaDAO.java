@@ -3,7 +3,6 @@ package com.macaxeira.DAO;
 import java.util.List;
 
 import com.macaxeira.model.Categoria;
-import com.macaxeira.model.Produto;
 
 public interface CategoriaDAO {
 

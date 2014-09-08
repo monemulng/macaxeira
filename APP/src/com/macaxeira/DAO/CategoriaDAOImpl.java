@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.macaxeira.DAO.ProdutoDAOImpl;
 import com.macaxeira.model.Categoria;
-import com.macaxeira.model.Produto;
 import com.macaxeira.util.DatabaseHelper;
 import com.macaxeira.util.MyApp;
 

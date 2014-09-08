@@ -104,4 +104,10 @@ public class ProdutoDaoMock implements ProdutoDAO {
 
 	}
 
+	@Override
+	public Produto buscarProdutoPorId(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

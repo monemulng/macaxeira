@@ -63,6 +63,12 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 				   "WHERE _id=" + prod.getCodProduto() + ";");
 	}
 	
+	@Override
+	public Produto buscarProdutoPorId(int id) {
+		// C
+		return null;
+	}
+	
 	public List<Produto> buscarProdutoPorCategoria(Categoria categ) {
 		SQLiteDatabase db = helper.getReadableDatabase();
 		

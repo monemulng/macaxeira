@@ -25,7 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 										  "nome TEXT NOT NULL, " +
 										  "categoria_id INTEGER, " +
 										  "FOREIGN KEY(categoria_id) REFERENCES categoria(_id));");
-		
+		// V
 		ContentValues values1 = new ContentValues();
 		values1.put("nome", "Sanduíches");
 		db.insert("categoria", null, values1);
