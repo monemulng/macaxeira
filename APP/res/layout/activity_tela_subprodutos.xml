@@ -18,6 +18,7 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/preco"
             android:textAppearance="?android:attr/textAppearanceLarge" />
+
     </LinearLayout>
 
     <LinearLayout
