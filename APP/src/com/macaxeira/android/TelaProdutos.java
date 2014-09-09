@@ -19,7 +19,7 @@ import com.macaxeira.model.Categoria;
 import com.macaxeira.model.Produto;
 import com.macaxeira.util.MyApp;
 
-public class TelaProdutos extends Activity {
+public class TelaProdutos extends Activity implements OnItemClickListener{
 	
 	ListView lista;
 	//private int cod;
@@ -39,17 +39,19 @@ public class TelaProdutos extends Activity {
 		filelist = new ArrayAdapter<Produto>(this, android.R.layout.simple_list_item_1, cat.getProdutos());
 		lista.setAdapter(filelist);
 		
+		lista.setOnItemClickListener(this);
+		
+		/*
 		lista.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> filelist, View v, int position,
-					long id) {
+			public void onItemClick(AdapterView<?> filelist, View v, int position, long id) {
 				// TODO Auto-generated method stub
 				Produto p = (Produto) filelist.getItemAtPosition(position);
 				
-				Toast.makeText(MyApp.getAppContext(), "vocÃª clicou em: " + p, Toast.LENGTH_LONG).show();
+				Toast.makeText(MyApp.getAppContext(), "você clicou em: " + p, Toast.LENGTH_LONG).show();
 			}
-		});
+		});*/
 		
 	}
 
@@ -58,5 +60,14 @@ public class TelaProdutos extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.tela_produtos, menu);
 		return true;
+	}
+
+	
+	@Override
+	public void onItemClick(AdapterView<?> filelist, View v, int position, long id){
+
+		Produto p = (Produto) filelist.getItemAtPosition(position);		
+		Toast.makeText(MyApp.getAppContext(), "você clicou em: " + p, Toast.LENGTH_LONG).show();
+		
 	}
 }
