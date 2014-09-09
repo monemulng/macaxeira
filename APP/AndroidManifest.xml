@@ -27,6 +27,10 @@
             android:label="@string/title_activity_tela_batata" >
         </activity>
         <activity
+            android:name="com.macaxeira.android.TelaSubProdutos"
+            android:label="@string/title_activity_tela_batata" >
+        </activity>
+        <activity
             android:name="com.macaxeira.android.Splash"
             android:theme="@android:style/Theme.NoTitleBar"
             android:label="@string/title_activity_splash" >

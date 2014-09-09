@@ -1,6 +1,8 @@
 package com.macaxeira.android;
 
 
+import java.io.Serializable;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,19 +42,6 @@ public class TelaProdutos extends Activity implements OnItemClickListener{
 		lista.setAdapter(filelist);
 		
 		lista.setOnItemClickListener(this);
-		
-		/*
-		lista.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> filelist, View v, int position, long id) {
-				// TODO Auto-generated method stub
-				Produto p = (Produto) filelist.getItemAtPosition(position);
-				
-				Toast.makeText(MyApp.getAppContext(), "você clicou em: " + p, Toast.LENGTH_LONG).show();
-			}
-		});*/
-		
 	}
 
 	@Override
@@ -67,7 +56,11 @@ public class TelaProdutos extends Activity implements OnItemClickListener{
 	public void onItemClick(AdapterView<?> filelist, View v, int position, long id){
 
 		Produto p = (Produto) filelist.getItemAtPosition(position);		
-		Toast.makeText(MyApp.getAppContext(), "você clicou em: " + p, Toast.LENGTH_LONG).show();
+		//Toast.makeText(MyApp.getAppContext(), "você clicou em: " + p, Toast.LENGTH_LONG).show();
+		
+		Intent intent = new Intent(TelaProdutos.this, TelaSubProdutos.class);
+		//intent.putExtra("produto", (Serializable) p);
+		startActivity(intent);
 		
 	}
 }
