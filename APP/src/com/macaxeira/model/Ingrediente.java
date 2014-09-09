@@ -12,6 +12,14 @@ public class Ingrediente {
 		this.nome = nome;
 	}
 	
+	public int getCod() {
+		return cod;
+	}
+
+	public void setCod(int cod) {
+		this.cod = cod;
+	}
+
 	public String toString() {
 		return nome;
 	}
