@@ -26,36 +26,36 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 										  "categoria_id INTEGER, " +
 										  "FOREIGN KEY(categoria_id) REFERENCES categoria(_id));");
 		// V
-		ContentValues values1 = new ContentValues();
-		values1.put("nome", "Sanduíches");
-		db.insert("categoria", null, values1);
-		ContentValues values2 = new ContentValues();
-		values2.put("nome", "Batatas");
-		db.insert("categoria", null, values2);
-		ContentValues values3 = new ContentValues();
-		values3.put("nome", "Hamburger");
-		values3.put("categoria_id", 1);
-		db.insert("produto", null, values3);
-		ContentValues values4 = new ContentValues();
-		values4.put("nome", "Frango");
-		values4.put("categoria_id", 1);
-		db.insert("produto", null, values4);
-		ContentValues values5 = new ContentValues();
-		values5.put("nome", "Picanha");
-		values5.put("categoria_id", 1);
-		db.insert("produto", null, values5);
-		ContentValues values6 = new ContentValues();
-		values6.put("nome", "Batata P");
-		values6.put("categoria_id", 2);
-		db.insert("produto", null, values6);
-		ContentValues values7 = new ContentValues();
-		values7.put("nome", "Batata M");
-		values7.put("categoria_id", 2);
-		db.insert("produto", null, values7);
-		ContentValues values8 = new ContentValues();
-		values8.put("nome", "Batata G");
-		values8.put("categoria_id", 2);
-		db.insert("produto", null, values8);
+		ContentValues value = new ContentValues();
+		value.put("nome", "Sanduíches");
+		db.insert("categoria", null, value);
+		value.clear();
+		value.put("nome", "Batatas");
+		db.insert("categoria", null, value);
+		value.clear();
+		value.put("nome", "Hamburger");
+		value.put("categoria_id", 1);
+		db.insert("produto", null, value);
+		value.clear();
+		value.put("nome", "Frango");
+		value.put("categoria_id", 1);
+		db.insert("produto", null, value);         
+		value.clear();
+		value.put("nome", "Picanha");
+		value.put("categoria_id", 1);
+		db.insert("produto", null, value);
+		value.clear();
+		value.put("nome", "Batata P");
+		value.put("categoria_id", 2);
+		db.insert("produto", null, value);
+		value.clear();
+		value.put("nome", "Batata M");
+		value.put("categoria_id", 2);
+		db.insert("produto", null, value);
+		value.clear();
+		value.put("nome", "Batata G");
+		value.put("categoria_id", 2);
+		db.insert("produto", null, value);
 	}
 
 	@Override
