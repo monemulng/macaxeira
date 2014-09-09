@@ -16,24 +16,55 @@ public class IngredienteDAOImpl implements IngredienteDAO {
 	DatabaseHelper helper = new DatabaseHelper(MyApp.getAppContext());
 
 	public void createIngrediente(Ingrediente ingr) {
-
+		SQLiteDatabase db = helper.getWritableDatabase();
+		
+		db.execSQL("INSERT INTO ingrediente (nome) " +
+				   "VALUES ('" + ingr.getNome() + "');");
 	}
 
 	@Override
 	public List<Ingrediente> readIngrediente() {
-		// L
-		return null;
+		List<Ingrediente> listaIngred = new ArrayList<Ingrediente>();
+		SQLiteDatabase db = helper.getReadableDatabase();
+		
+		Cursor cursor = db.rawQuery("SELECT * FROM ingrediente;", null);
+		
+		cursor.moveToFirst();
+		
+		for(int i = 0; i < cursor.getCount(); i++){
+			int codI = cursor.getInt(0);
+			String nomeI = cursor.getString(1);
+			
+			Ingrediente i1 = new Ingrediente();
+			c.setCod(codi1);
+			c.setNome(nomei1);
+			
+			listaIngred.add(i);
+			
+			cursor.moveToNext();
+		}
+		
+		cursor.close();
+		
+		return listaIngred;
 	}
 
 	@Override
 	public void updateIngrediente(Ingrediente ingr) {
-		// L
+		SQLiteDatabase db = helper.getWritableDatabase();
+		
+		db.execSQL("UPDATE ingrediente " +
+				   "SET nome='" + ingr.getNome() + " " +
+				   "WHERE _id=" + ingr.getCod() + ";");
 
 	}
 
 	@Override
 	public void deleteIngrediente(Ingrediente ingr) {
-		// L
+		SQLiteDatabase db = helper.getWritableDatabase();
+		
+		db.execSQL("DELETE FROM ingrediente " +
+				   "WHERE _id=" + cingr.getCod() + ";");
 
 	}
 
