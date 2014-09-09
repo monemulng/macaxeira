@@ -2,7 +2,7 @@ package com.macaxeira.model;
 
 public class Ingrediente {
 	private String nome;
-	private int cod;
+	private int codIngrediente;
 	
 	public String getNome() {
 		return nome;
@@ -12,12 +12,12 @@ public class Ingrediente {
 		this.nome = nome;
 	}
 	
-	public int getCod() {
-		return cod;
+	public int getCodIngrediente() {
+		return codIngrediente;
 	}
 
-	public void setCod(int cod) {
-		this.cod = cod;
+	public void setCodIngrediente(int cod) {
+		this.codIngrediente = cod;
 	}
 
 	public String toString() {

@@ -32,14 +32,14 @@ public class IngredienteDAOImpl implements IngredienteDAO {
 		cursor.moveToFirst();
 		
 		for(int i = 0; i < cursor.getCount(); i++){
-			int codI = cursor.getInt(0);
-			String nomeI = cursor.getString(1);
+			int codIngr = cursor.getInt(0);
+			String nomeIngr = cursor.getString(1);
 			
-			Ingrediente i1 = new Ingrediente();
-			c.setCod(codi1);
-			c.setNome(nomei1);
+			Ingrediente ingr = new Ingrediente();
+			ingr.setCodIngrediente(codIngr);
+			ingr.setNome(nomeIngr);
 			
-			listaIngred.add(i);
+			listaIngred.add(ingr);
 			
 			cursor.moveToNext();
 		}
@@ -55,7 +55,7 @@ public class IngredienteDAOImpl implements IngredienteDAO {
 		
 		db.execSQL("UPDATE ingrediente " +
 				   "SET nome='" + ingr.getNome() + " " +
-				   "WHERE _id=" + ingr.getCod() + ";");
+				   "WHERE _id=" + ingr.getCodIngrediente() + ";");
 
 	}
 
@@ -64,7 +64,7 @@ public class IngredienteDAOImpl implements IngredienteDAO {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
 		db.execSQL("DELETE FROM ingrediente " +
-				   "WHERE _id=" + cingr.getCod() + ";");
+				   "WHERE _id=" + ingr.getCodIngrediente() + ";");
 
 	}
 
