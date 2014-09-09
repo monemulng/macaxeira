@@ -8,7 +8,14 @@ public class Produto {
 	private int codProduto;
 	private int codCategoria;
 	private List<Ingrediente> ingredientes;
+	private List<Adicional> adicionais;
 	
+	public List<Adicional> getAdicionais() {
+		return adicionais;
+	}
+	public void setAdicionais(List<Adicional> adicionais) {
+		this.adicionais = adicionais;
+	}
 	public List<Ingrediente> getIngredientes() {
 		return ingredientes;
 	}
