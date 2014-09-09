@@ -14,6 +14,7 @@ import com.macaxeira.util.MyApp;
 public class ProdutoDAOImpl implements ProdutoDAO {
 
 	DatabaseHelper helper = new DatabaseHelper(MyApp.getAppContext());
+	private IngredienteDAOImpl ingDao = new IngredienteDAOImpl();
 	
 	public void createProduto(Produto prod) {
 		SQLiteDatabase db = helper.getWritableDatabase();
@@ -65,8 +66,25 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 	
 	@Override
 	public Produto buscarProdutoPorId(int id) {
-		// C
-		return null;
+		SQLiteDatabase db = helper.getReadableDatabase();
+		
+		Produto p = new Produto();		
+		
+		p.setCodProduto(id);
+		
+		Cursor cursor = db.rawQuery("SELECT * FROM produto WHERE _id=" + id + ";" , null);
+		
+		cursor.moveToFirst();
+		
+		String nomeProduto = cursor.getString(1);
+		
+		p.setNome(nomeProduto);
+		
+		p.setIngredientes(ingDao.buscarIngredientePorProduto(p));
+		
+		cursor.close();
+		
+		return p;
 	}
 	
 	public List<Produto> buscarProdutoPorCategoria(Categoria categ) {
