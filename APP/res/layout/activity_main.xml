@@ -43,6 +43,7 @@
         <ImageButton
             android:id="@+id/sanduba"
             android:layout_width="0dip"
+            android:contentDescription="1"
             android:layout_height="match_parent"
             android:layout_gravity="left|center_horizontal"
             android:layout_weight="0.5"
@@ -52,6 +53,7 @@
 
         <ImageButton
             android:id="@+id/batata"
+            android:contentDescription="2"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_gravity="right|center_horizontal"
