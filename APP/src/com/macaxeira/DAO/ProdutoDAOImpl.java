@@ -92,7 +92,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 		
 		List<Produto> listaProd = new ArrayList<Produto>();
 		
-		Cursor cursor = db.rawQuery("SELECT * FROM produto WHERE categoria_id=" + categ.getCodCategoria() + ";" , null);
+		Cursor cursor = db.rawQuery("SELECT * FROM produto WHERE categoria_id=" + categ.getId() + ";" , null);
 		
 		cursor.moveToFirst();
 		

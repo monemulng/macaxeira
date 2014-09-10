@@ -20,11 +20,11 @@ public class CategoriaDaoMock implements CategoriaDAO {
 		Categoria categ2 = new Categoria();
 		
 		
-		categ.setCodCategoria(1);
+		categ.setId(1);
 		categ.setNome("Sanduiches");	
 		categorias.add(categ);
 		
-		categ2.setCodCategoria(2);
+		categ2.setId(2);
 		categ2.setNome("Batatas");
 		categorias.add(categ2);
 		System.out.println(categorias);

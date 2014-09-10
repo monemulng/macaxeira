@@ -7,6 +7,9 @@
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="20" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
+    
 
     <application
         android:name="com.macaxeira.util.MyApp"
@@ -30,6 +33,7 @@
             android:name="com.macaxeira.android.TelaSubProdutos"
             android:label="@string/title_activity_tela_batata" >
         </activity>
+        
         <activity
             android:name="com.macaxeira.android.Splash"
             android:theme="@android:style/Theme.NoTitleBar"
@@ -40,6 +44,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+
+        <activity
+            android:name="com.macaxeira.http.HttpActivityTeste"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:label="@string/title_activity_splash" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        
+        
+        
+        
     </application>
 
 </manifest>

@@ -1,16 +1,22 @@
 package com.macaxeira.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Categoria {
+public class Categoria implements Serializable{
 	
-	private int codCategoria;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private int id;
 	private String nome;
 	private List<Produto> produtos = new ArrayList<Produto>();
 	
 	public Categoria(int cod, String nome){
-		this.codCategoria = cod;
+		this.id = cod;
 		this.nome = nome;
 	}
 	public Categoria(){
@@ -23,11 +29,11 @@ public class Categoria {
 		this.produtos = produtos;
 	}
 	
-	public int getCodCategoria() {
-		return codCategoria;
+	public int getId() {
+		return id;
 	}
-	public void setCodCategoria(int codCategoria) {
-		this.codCategoria = codCategoria;
+	public void setId(int codCategoria) {
+		this.id = codCategoria;
 	}
 	public String getNome() {
 		return nome;

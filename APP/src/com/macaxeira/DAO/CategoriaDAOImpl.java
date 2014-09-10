@@ -36,7 +36,7 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 			String nomeCat = cursor.getString(1);
 			
 			Categoria c = new Categoria();
-			c.setCodCategoria(codCat);
+			c.setId(codCat);
 			c.setNome(nomeCat);
 			
 			listaCat.add(c);
@@ -54,7 +54,7 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 		
 		db.execSQL("UPDATE categoria " +
 				   "SET nome='" + categ.getNome() + " " +
-				   "WHERE _id=" + categ.getCodCategoria() + ";");
+				   "WHERE _id=" + categ.getId() + ";");
 		
 	}
 
@@ -62,7 +62,7 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
 		db.execSQL("DELETE FROM categoria " +
-				   "WHERE _id=" + categ.getCodCategoria() + ";");
+				   "WHERE _id=" + categ.getId() + ";");
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 		
 		Categoria categ = new Categoria();
 		
-		categ.setCodCategoria(id);
+		categ.setId(id);
 		
 		Cursor cursor = db.rawQuery("SELECT * FROM categoria WHERE _id=" + id + ";" , null);
 		
