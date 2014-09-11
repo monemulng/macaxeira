@@ -59,7 +59,7 @@ public class TelaProdutos extends Activity implements OnItemClickListener{
 		//Toast.makeText(MyApp.getAppContext(), "você clicou em: " + p, Toast.LENGTH_LONG).show();
 		
 		Intent intent = new Intent(TelaProdutos.this, TelaSubProdutos.class);
-		//intent.putExtra("produto", (Serializable) p);
+		intent.putExtra("produto", p);
 		startActivity(intent);
 		
 	}

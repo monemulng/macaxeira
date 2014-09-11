@@ -1,12 +1,21 @@
 package com.macaxeira.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Produto {
+public class Produto implements Serializable {
 
 	private String nome;
 	private int codProduto;
 	private int codCategoria;
+	private double preco;
+	public double getPreco() {
+		return preco;
+	}
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+
 	private List<Ingrediente> ingredientes;
 	private List<Adicional> adicionais;
 	
