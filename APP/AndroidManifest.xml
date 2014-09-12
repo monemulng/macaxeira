@@ -24,11 +24,11 @@
         </activity>
         <activity
             android:name="com.macaxeira.android.TelaProdutos"
-            android:label="@string/title_activity_tela_batata" >
+            android:label="@string/title_activity_tela_produtos" >
         </activity>
         <activity
             android:name="com.macaxeira.android.TelaSubProdutos"
-            android:label="@string/title_activity_tela_batata" >
+            android:label="@string/title_activity_tela_produto" >
         </activity>
         <activity
             android:name="com.macaxeira.android.Splash"

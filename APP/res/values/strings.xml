@@ -5,7 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_tela_sanduiches">TelaSanduiches</string>
-    <string name="title_activity_tela_batata">TelaBatata</string>
+    <string name="title_activity_tela_produtos">Tela Produtos</string>
+    <string name="title_activity_tela_produto">Tela Produto</string>
     <string name="mesa">MESA:</string>
     <string name="img1">Imagem1</string>
     <string name="img2">Imagem2</string>

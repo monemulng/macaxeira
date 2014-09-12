@@ -11,7 +11,7 @@ import com.macaxeira.model.Produto;
 
 public class TelaSubProdutos extends Activity {
 	private Produto p;
-	private ItemPedido i = new ItemPedido();
+	private ItemPedido i ;
 	private ExpandableListView ingredientes;
 	private ExpandableListView adicionais;
 	private TextView nome;
@@ -23,7 +23,8 @@ public class TelaSubProdutos extends Activity {
 		setContentView(R.layout.activity_tela_subprodutos);
 		p = (Produto) getIntent().getExtras().getSerializable("produto");
 		
-		i.setProduto(p) ;
+		i = new ItemPedido();
+		i.setProduto(p);
 	
 		nome = (TextView) findViewById(R.id.produto);
 		preco = (TextView) findViewById(R.id.preco);
@@ -31,7 +32,7 @@ public class TelaSubProdutos extends Activity {
 		adicionais = (ExpandableListView) findViewById(R.id.expandableListView2);
 		
 		nome.setText(i.getProduto().getNome());
-		preco.setText(""+i.getProduto().getPreco());
+		preco.setText("R$:"+i.getProduto().getPreco());
 		
 		
 		
