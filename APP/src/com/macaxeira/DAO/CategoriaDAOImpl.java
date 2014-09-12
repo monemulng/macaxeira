@@ -3,6 +3,7 @@ package com.macaxeira.DAO;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -19,8 +20,10 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 	public void createCategoria(Categoria categ) {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
-		db.execSQL("INSERT INTO categoria (nome) " +
-				   "VALUES ('" + categ.getNome() + "');");
+		ContentValues value = new ContentValues();
+		value.put("nome", categ.getNome());
+		db.insert("categoria", null, value);
+		
 	}
 
 	public List<Categoria> readCategoria() {

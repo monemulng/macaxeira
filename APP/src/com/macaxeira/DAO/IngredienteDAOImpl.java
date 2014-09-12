@@ -3,6 +3,7 @@ package com.macaxeira.DAO;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -18,8 +19,9 @@ public class IngredienteDAOImpl implements IngredienteDAO {
 	public void createIngrediente(Ingrediente ingr) {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
-		db.execSQL("INSERT INTO ingrediente (nome) " +
-				   "VALUES ('" + ingr.getNome() + "');");
+		ContentValues value = new ContentValues();
+		value.put("nome", ingr.getNome());
+		db.insert("ingrediente", null, value);
 	}
 
 	@Override

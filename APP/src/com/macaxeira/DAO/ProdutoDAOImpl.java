@@ -3,6 +3,7 @@ package com.macaxeira.DAO;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -19,8 +20,10 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 	public void createProduto(Produto prod) {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
-		db.execSQL("INSERT INTO produto (nome, categoria_id) " +
-				   "VALUES ('" + prod.getNome() + "', " + prod.getCodCategoria() + ");");
+		ContentValues value = new ContentValues();
+		value.put("nome", prod.getNome());
+		value.put("categoria_id", prod.getCodCategoria());
+		db.insert("produto", null, value);
 	}
 	
 	public List<Produto> readProduto() {
