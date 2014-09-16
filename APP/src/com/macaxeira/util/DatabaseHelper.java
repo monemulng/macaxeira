@@ -156,37 +156,106 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 				+ "FOREIGN KEY (`Adicional_id`)"
 				+ "REFERENCES `mydb`.`Adicional` (`_id`)"
 				+ "ON DELETE NO ACTION);");
-		// V
+		
 		ContentValues value = new ContentValues();
+		
 		value.put("nome", "Sanduíches");
 		db.insert("categoria", null, value);
 		value.clear();
 		value.put("nome", "Batatas");
 		db.insert("categoria", null, value);
 		value.clear();
+		
+		
 		value.put("nome", "Hamburger");
+		value.put("preco", 9.99);
 		value.put("categoria_id", 1);
 		db.insert("produto", null, value);
 		value.clear();
 		value.put("nome", "Frango");
+		value.put("preco", 7.95);
 		value.put("categoria_id", 1);
 		db.insert("produto", null, value);         
 		value.clear();
 		value.put("nome", "Picanha");
+		value.put("preco", 18.90);
 		value.put("categoria_id", 1);
 		db.insert("produto", null, value);
 		value.clear();
 		value.put("nome", "Batata P");
+		value.put("preco", 3.75);
 		value.put("categoria_id", 2);
 		db.insert("produto", null, value);
 		value.clear();
 		value.put("nome", "Batata M");
+		value.put("preco", 4.75);
 		value.put("categoria_id", 2);
 		db.insert("produto", null, value);
 		value.clear();
 		value.put("nome", "Batata G");
+		value.put("preco", 6.50);
 		value.put("categoria_id", 2);
 		db.insert("produto", null, value);
+		value.clear();
+	
+		value.put("nome", "Pao");
+		db.insert("ingrediente", null, value);
+		value.clear();
+		value.put("nome", "Hamburguer bovino");
+		db.insert("ingrediente", null, value);
+		value.clear();
+		value.put("nome", "Hamburguer de frango");
+		db.insert("ingrediente", null, value);
+		value.clear();
+		value.put("nome", "Alface");
+		db.insert("ingrediente", null, value);
+		value.clear();
+		value.put("nome", "Tomate");
+		db.insert("ingrediente", null, value);
+		value.clear();
+		value.put("nome", "Picles");
+		db.insert("ingrediente", null, value);
+		value.clear();
+		value.put("nome", "Ovo");
+		db.insert("ingrediente", null, value);
+		value.clear();
+		value.put("nome", "Batata");
+		db.insert("ingrediente", null, value);
+		value.clear();
+		
+		
+		value.put("nome", "Bacon" );
+		value.put("preco", 1.75);
+		db.insert("adicional", null, value);
+		value.clear();
+		value.put("nome", "Chedar" );
+		value.put("preco", 0.99);
+		db.insert("adicional", null, value);
+		value.clear();		
+		value.put("nome", "Milho" );
+		value.put("preco", 0.75);
+		db.insert("adicional", null, value);
+		value.clear();
+		value.put("nome", "Catupiry" );
+		value.put("preco", 2.00);
+		db.insert("adicional", null, value);
+		value.clear();		
+		value.put("nome", "Molho barbecue" );
+		value.put("preco", 1.50);
+		db.insert("adicional", null, value);
+		value.clear();
+		value.put("nome", "Ervilha" );
+		value.put("preco", 0.75);
+		db.insert("adicional", null, value);
+		value.clear();
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	@Override
