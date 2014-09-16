@@ -105,6 +105,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 			
 			Produto p = new Produto();
 			p.setNome(nomeProd);
+			p.setIngredientes(ingDao.buscarIngredientePorProduto(p));
 			
 			listaProd.add(p);
 			
