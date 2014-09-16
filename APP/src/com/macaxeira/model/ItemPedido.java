@@ -20,7 +20,7 @@ public class ItemPedido implements Serializable{
 		return produto;
 	}
 	public void setProduto(Produto p) {
-		this.produto = produto;
+		this.produto = p;
 	}
 	public List<Ingrediente> getIngredientesExcluidos() {
 		return ingredientesExcluidos;
