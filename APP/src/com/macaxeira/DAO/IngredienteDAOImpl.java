@@ -75,24 +75,40 @@ public class IngredienteDAOImpl implements IngredienteDAO {
 		SQLiteDatabase db = helper.getReadableDatabase();
 
 		List<Ingrediente> listaIngred = new ArrayList<Ingrediente>();
+		List<Integer> listaId = new ArrayList<Integer>();
 
 		Cursor cursor = db.rawQuery(
-				"SELECT * FROM ingrediente WHERE produto_id="
+				"SELECT * FROM Produto_has_Ingrediente WHERE produto_id="
 						+ prod.getCodProduto() + ";", null);
 
 		cursor.moveToFirst();
 
 		for (int i = 1; i <= cursor.getCount(); i++) {
-			String nomeIngred = cursor.getString(1);
+			int idIngred = cursor.getInt(1);
 
-			Ingrediente ing = new Ingrediente();
-			ing.setNome(nomeIngred);
-
-			listaIngred.add(ing);
+			listaId.add(idIngred);
 
 			cursor.moveToNext();
 		}
-
+		
+		cursor.close();
+		
+		for (int i = 0; i <= listaId.size(); i++){
+			
+			cursor = db.rawQuery("SELECT * FROM Ingrediente WHERE _id=" +
+							 listaId.get(i) + ";", null);
+			
+			cursor.moveToFirst();
+			
+			String nomeIngr = cursor.getString(1);
+			
+			Ingrediente ingr = new Ingrediente();
+			ingr.setCodIngrediente(listaId.get(i));
+			ingr.setNome(nomeIngr);
+			
+			listaIngred.add(ingr);
+		}
+		
 		cursor.close();
 
 		return listaIngred;
