@@ -1,5 +1,8 @@
 package com.macaxeira.android;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,6 +10,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
+import com.macaxeira.model.Adicional;
 import com.macaxeira.model.Ingrediente;
 import com.macaxeira.model.ItemPedido;
 import com.macaxeira.model.Produto;
@@ -24,8 +28,8 @@ public class TelaSubProdutos extends Activity {
 	private TextView preco;
 	
 	private String[] txtProduto;
-	private String[] listaIngredientes;
-	private String[] listaAdcionais;
+	private String[] vetorIngredientes;
+	private String[] vetorAdicionais;
 	private String[][] txtIngredientes;
 
 	
@@ -46,9 +50,9 @@ public class TelaSubProdutos extends Activity {
 		txtProduto = new String[] {"Ingredientes", "Adcionais"};
 		
 		//depois pegar isso aqui do banco...
-		listaIngredientes = new String[]{"cebola", "milho", "etc"};
-		listaAdcionais = new String[]{"mais cebola", "mais milho", "etc"};
-		txtIngredientes = new String[][]{listaIngredientes, listaAdcionais};
+		vetorIngredientes = pegarNomesIngredientes(i.getProduto().getIngredientes());
+		vetorAdicionais = pegarNomesAdicionais(i.getProduto().getAdicionais());
+		txtIngredientes = new String[][]{vetorIngredientes, vetorAdicionais};
 		
 		adapter = new CategoriaAdapter(this, txtProduto, txtIngredientes);
 		ingredientes.setAdapter(adapter);
@@ -56,7 +60,23 @@ public class TelaSubProdutos extends Activity {
 		
 		nome.setText(i.getProduto().getNome());
 		preco.setText("R$: "+i.getProduto().getPreco());
+		i.getProduto().getIngredientes().toArray();
 
+	}
+
+	private String[] pegarNomesIngredientes(List<Ingrediente> itens) {
+		String[] nomes = new String[itens.size()];
+		for(int i = 0; i<= itens.size();i++ ){
+			nomes[i] = itens.get(i).toString();
+		}
+		return nomes;
+	}
+	private String[] pegarNomesAdicionais(List<Adicional> itens) {
+		String[] nomes = new String[itens.size()];
+		for(int i = 0; i<= itens.size();i++ ){
+			nomes[i] = itens.get(i).toString();
+		}
+		return nomes;
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {

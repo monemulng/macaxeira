@@ -5,6 +5,7 @@ import java.util.List;
 import com.macaxeira.model.Ingrediente;
 import com.macaxeira.model.Produto;
 
+
 public interface IngredienteDAO {
 	
 	public void createIngrediente(Ingrediente ingr);
