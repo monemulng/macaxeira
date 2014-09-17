@@ -7,34 +7,108 @@ import com.macaxeira.model.Produto;
 
 public class AdicionalDAOImpl implements AdicionalDAO {
 
+	DatabaseHelper helper = new DatabaseHelper(MyApp.getAppContext());
+	
 	@Override
-	public void createAdicional(Adicional adic) {
-		// TODO Auto-generated method stub
+	public void createAdicional(Adicional adc) {
+		SQLiteDatabase db = helper.getWritableDatabase();
+		
+		ContentValues value = new ContentValues();
+		value.put("nome", adc.getNome());
+		db.insert("adicional", null, value);
 
 	}
 
 	@Override
 	public List<Adicional> readAdicional() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Adicional> listaAdic = new ArrayList<Adicional>();
+		SQLiteDatabase db = helper.getReadableDatabase();
+		
+		Cursor cursor = db.rawQuery("SELECT * FROM adicional;", null);
+		
+		cursor.moveToFirst();
+		
+		for(int i = 0; i < cursor.getCount(); i++){
+			int codAdc = cursor.getInt(0);
+			String nomeAdc = cursor.getString(1);
+			
+			Adicional adc = new Adicional();
+			adc.setCodAdic(codAdc);
+			adc.setNome(nomeAdc);
+			
+			listaAdic.add(adc);
+			
+			cursor.moveToNext();
+		}
+		
+		cursor.close();
+		
+		return listaAdic;
+		
 	}
 
 	@Override
-	public void updateAdicional(Adicional adic) {
-		// TODO Auto-generated method stub
+	public void updateAdicional(Adicional adc) {
+		SQLiteDatabase db = helper.getWritableDatabase();
+		
+		db.execSQL("UPDATE adicional " +
+				   "SET nome='" + adc.getNome() + " " +
+				   "WHERE _id=" + adc.getCodAdicional() + ";");
+
 
 	}
 
 	@Override
-	public void deleteAdicional(Adicional adic) {
-		// TODO Auto-generated method stub
+	public void deleteAdicional(Adicional adc) {
+		SQLiteDatabase db = helper.getWritableDatabase();
+		
+		db.execSQL("DELETE FROM adicional " +
+				   "WHERE _id=" + adc.getCodAdicional() + ";");
 
 	}
 
 	@Override
 	public List<Adicional> buscarAdicionalPorProduto(Produto prod) {
-		// TODO Auto-generated method stub
-		return null;
+		SQLiteDatabase db = helper.getReadableDatabase();
+
+		List<Adicional> listaAdic = new ArrayList<Adicional>();
+		List<Integer> listaId = new ArrayList<Integer>();
+
+		Cursor cursor = db.rawQuery(
+				"SELECT * FROM Produto_has_Adicional WHERE produto_id="
+						+ prod.getCodProduto() + ";", null);
+
+		cursor.moveToFirst();
+
+		for (int i = 1; i <= cursor.getCount(); i++) {
+			int idAdc = cursor.getInt(1);
+
+			listaId.add(idAdc);
+
+			cursor.moveToNext();
+		}
+		
+		cursor.close();
+		
+		for (int i = 0; i <= listaId.size(); i++){
+			
+			cursor = db.rawQuery("SELECT * FROM Adicional WHERE _id=" +
+							 listaId.get(i) + ";", null);
+			
+			cursor.moveToFirst();
+			
+			String nomeAdic = cursor.getString(1);
+			
+			Adicional adc = new Adicional();
+			adc.setCodAdicional(listaId.get(i));
+			adc.setNome(nomeAdc);
+			
+			listaAdic.add(adc);
+		}
+		
+		cursor.close();
+
+		return listaIngred;
 	}
 
 }
