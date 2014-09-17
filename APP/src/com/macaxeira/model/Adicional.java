@@ -3,6 +3,7 @@ package com.macaxeira.model;
 public class Adicional {
 	private String nome;
 	private int id;
+	private double preco;
 
 	public String getNome() {
 		return nome;
@@ -22,6 +23,14 @@ public class Adicional {
 
 	public String toString() {
 		return nome;
+	}
+
+	public double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
 	}
 
 }

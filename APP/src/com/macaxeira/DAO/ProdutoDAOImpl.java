@@ -17,6 +17,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 
 	DatabaseHelper helper = new DatabaseHelper(MyApp.getAppContext());
 	private IngredienteDAOImpl ingDao = new IngredienteDAOImpl();
+	private AdicionalDAOImpl adcDao = new AdicionalDAOImpl();
 	
 	public void createProduto(Produto prod) {
 		SQLiteDatabase db = helper.getWritableDatabase();
@@ -108,6 +109,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 			p.setCodProduto(idProd);
 			p.setNome(nomeProd);
 			p.setIngredientes(ingDao.buscarIngredientePorProduto(p));
+			p.setAdicionais(adcDao.buscarAdicionalPorProduto(p));
 			
 			listaProd.add(p);
 			
