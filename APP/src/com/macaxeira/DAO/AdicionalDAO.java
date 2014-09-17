@@ -13,7 +13,7 @@ public interface AdicionalDAO {
 	
 	public void updateAdicional(Adicional adic);
 	
-	public void deleteAdicional(Adicional adci);
+	public void deleteAdicional(Adicional adic);
 	
 	public List<Adicional> buscarAdicionalPorProduto(Produto prod);
 

@@ -26,7 +26,7 @@ public class AdicionalDAOImpl implements AdicionalDAO {
 	}
 
 	@Override
-	public void deleteAdicional(Adicional adci) {
+	public void deleteAdicional(Adicional adic) {
 		// TODO Auto-generated method stub
 
 	}
