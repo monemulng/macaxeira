@@ -4,11 +4,14 @@ package com.macaxeira.mock;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.widget.Toast;
+
 import com.macaxeira.DAO.ProdutoDAO;
 import com.macaxeira.model.Adicional;
 import com.macaxeira.model.Categoria;
 import com.macaxeira.model.Ingrediente;
 import com.macaxeira.model.Produto;
+import com.macaxeira.util.MyApp;
 
 public class ProdutoDaoMock implements ProdutoDAO {
 
@@ -171,8 +174,56 @@ public class ProdutoDaoMock implements ProdutoDAO {
 
 	@Override
 	public Produto buscarProdutoPorId(int id) {
-		// TODO Auto-generated method stub
+		if(id == 1){
 		return null;
+		}
+		Produto p1 = new Produto();
+		p1.setNome("X-Bacon");
+		p1.setCodCategoria(1);
+		p1.setCodProduto(1);
+		List<Ingrediente> listIngrediente = new ArrayList<Ingrediente>();
+		List<Adicional> listAdicional = new ArrayList<Adicional>();
+		
+		Ingrediente i = new Ingrediente();
+		i.setNome("bacon");
+		Ingrediente i2 = new Ingrediente();
+		i2.setNome("pão");
+		
+		listIngrediente.add(i);
+		listIngrediente.add(i);
+		listIngrediente.add(i);
+		listIngrediente.add(i);
+		listIngrediente.add(i2);
+		listIngrediente.add(i2);
+		listIngrediente.add(i2);
+		listIngrediente.add(i2);
+
+		Adicional a = new Adicional();
+		a.setNome("bacooon");
+		a.setPreco(2.50);
+		Adicional a2 = new Adicional();
+		a2.setNome("bacooon x 2");
+		a2.setPreco(5.0);
+		Adicional a3 = new Adicional();
+		a3.setNome("bacooon x 50");
+		a3.setPreco(1000.0);
+		
+		listAdicional.add(a);
+		listAdicional.add(a);
+		listAdicional.add(a);
+		listAdicional.add(a);
+		listAdicional.add(a2);
+		listAdicional.add(a2);
+		listAdicional.add(a3);
+		listAdicional.add(a3);
+		listAdicional.add(a3);
+		listAdicional.add(a3);
+
+		p1.setAdicionais(listAdicional);
+		p1.setIngredientes(listIngrediente);
+		
+		return p1;
+		
 	}
 
 }

@@ -5,9 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.SearchView;
+import android.widget.Toast;
+
+import com.macaxeira.DAO.ProdutoDAO;
+import com.macaxeira.mock.ProdutoDaoMock;
+import com.macaxeira.model.Produto;
+import com.macaxeira.util.MyApp;
 
 public class MainActivity extends Activity {
-
+	private ProdutoDAO prodDao = new ProdutoDaoMock();
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -23,5 +30,18 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(MainActivity.this, TelaProdutos.class);
 		intent.putExtra("id", v.getContentDescription());
 		startActivity(intent);
+	}
+	public void buscar(View v){
+		SearchView s = (SearchView)v;
+		Produto p = prodDao.buscarProdutoPorId(Integer.parseInt(s.getQuery().toString()));
+		if(p == null){
+			Toast.makeText(MyApp.getAppContext(), "Id não encontrado!", 1000).show();
+		}
+		else{
+			Intent intent = new Intent(MainActivity.this, TelaSubProdutos.class);
+			intent.putExtra("produto", p);
+			startActivity(intent);
+		}
+		
 	}
 }

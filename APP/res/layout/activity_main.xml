@@ -84,7 +84,8 @@
             android:layout_marginTop="40dp"
             android:layout_weight="0.6"
             android:iconifiedByDefault="false"
-            android:queryHint="Código" >
+            android:queryHint="Código" 
+            android:onClick="buscar">
         </SearchView>
 
         <ImageButton
