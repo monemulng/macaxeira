@@ -82,7 +82,7 @@ public class AdicionalDAOImpl implements AdicionalDAO {
 		List<Integer> listaId = new ArrayList<Integer>();
 
 		Cursor cursor = db.rawQuery(
-				"SELECT * FROM Produto_has_Adicional WHERE produto_id="
+				"SELECT * FROM produto_has_Adicional WHERE produto_id="
 						+ prod.getCodProduto() + ";", null);
 
 		cursor.moveToFirst();
@@ -99,7 +99,7 @@ public class AdicionalDAOImpl implements AdicionalDAO {
 		
 		for (int i = 0; i <= listaId.size(); i++){
 			
-			cursor = db.rawQuery("SELECT * FROM Adicional WHERE _id=" +
+			cursor = db.rawQuery("SELECT * FROM adicional WHERE _id=" +
 							 listaId.get(i) + ";", null);
 			
 			cursor.moveToFirst();

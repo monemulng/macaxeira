@@ -78,7 +78,7 @@ public class IngredienteDAOImpl implements IngredienteDAO {
 		List<Integer> listaId = new ArrayList<Integer>();
 
 		Cursor cursor = db.rawQuery(
-				"SELECT * FROM Produto_has_Ingrediente WHERE produto_id="
+				"SELECT * FROM produto_has_Ingrediente WHERE produto_id="
 						+ prod.getCodProduto() + ";", null);
 
 		cursor.moveToFirst();
@@ -95,7 +95,7 @@ public class IngredienteDAOImpl implements IngredienteDAO {
 		
 		for (int i = 0; i <= listaId.size(); i++){
 			
-			cursor = db.rawQuery("SELECT * FROM Ingrediente WHERE _id=" +
+			cursor = db.rawQuery("SELECT * FROM ingrediente WHERE _id=" +
 							 listaId.get(i) + ";", null);
 			
 			cursor.moveToFirst();
