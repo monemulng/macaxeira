@@ -7,15 +7,15 @@ public class ItemPedido implements Serializable{
 	
 	private Produto produto;
 	private int idItemPedido;
+	private List<Ingrediente> ingredientesExcluidos;
+	private List<Adicional> adicionaisItem;
+	
 	public int getIdItemPedido() {
 		return idItemPedido;
 	}
 	public void setIdItemPedido(int idItemPedido) {
 		this.idItemPedido = idItemPedido;
 	}
-	private List<Ingrediente> ingredientesExcluidos;
-	private List<Adicional> adicionaisItem;
-	
 	public Produto getProduto() {
 		return produto;
 	}
@@ -32,21 +32,6 @@ public class ItemPedido implements Serializable{
 		return adicionaisItem;
 	}
 	public void setAdicionaisItem(List<Adicional> adicionaisItem) {
-		this.adicionaisItem = adicionaisItem;
-	}
-
-
-	public List<Ingrediente> getingredientesExcluidos() {
-		return ingredientesExcluidos;
-	}
-	public void setingredientesExcluidos(List<Ingrediente> ingredientesExcluidos) {
-		this.ingredientesExcluidos = ingredientesExcluidos;
-	}
-	
-	public List<Adicional> getadicionaisItem() {
-		return adicionaisItem;
-	}
-	public void setadicionaisItem(List<Adicional> adicionaisItem) {
 		this.adicionaisItem = adicionaisItem;
 	}
 }
