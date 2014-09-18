@@ -1,9 +1,16 @@
 package com.macaxeira.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.macaxeira.model.Adicional;
 import com.macaxeira.model.Produto;
+import com.macaxeira.util.DatabaseHelper;
+import com.macaxeira.util.MyApp;
 
 public class AdicionalDAOImpl implements AdicionalDAO {
 
@@ -33,7 +40,7 @@ public class AdicionalDAOImpl implements AdicionalDAO {
 			String nomeAdc = cursor.getString(1);
 			
 			Adicional adc = new Adicional();
-			adc.setCodAdic(codAdc);
+			adc.setId(codAdc);
 			adc.setNome(nomeAdc);
 			
 			listaAdic.add(adc);
@@ -53,7 +60,7 @@ public class AdicionalDAOImpl implements AdicionalDAO {
 		
 		db.execSQL("UPDATE adicional " +
 				   "SET nome='" + adc.getNome() + " " +
-				   "WHERE _id=" + adc.getCodAdicional() + ";");
+				   "WHERE _id=" + adc.getId() + ";");
 
 
 	}
@@ -63,7 +70,7 @@ public class AdicionalDAOImpl implements AdicionalDAO {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
 		db.execSQL("DELETE FROM adicional " +
-				   "WHERE _id=" + adc.getCodAdicional() + ";");
+				   "WHERE _id=" + adc.getId() + ";");
 
 	}
 
@@ -100,15 +107,15 @@ public class AdicionalDAOImpl implements AdicionalDAO {
 			String nomeAdic = cursor.getString(1);
 			
 			Adicional adc = new Adicional();
-			adc.setCodAdicional(listaId.get(i));
-			adc.setNome(nomeAdc);
+			adc.setId(listaId.get(i));
+			adc.setNome(nomeAdic);
 			
 			listaAdic.add(adc);
 		}
 		
 		cursor.close();
 
-		return listaIngred;
+		return listaAdic;
 	}
 
 }

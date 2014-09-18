@@ -21,7 +21,7 @@ public class TelaSubProdutos extends Activity {
 	private ItemPedido i ;
 	
 	private ExpandableListView ingredientes;
-	//private ExpandableListView adicionais;
+	private ExpandableListView adicionais;
 	private BaseExpandableListAdapter adapter;
 	
 	private TextView nome;
@@ -31,6 +31,7 @@ public class TelaSubProdutos extends Activity {
 	private String[] vetorIngredientes;
 	private String[] vetorAdicionais;
 	private String[][] txtIngredientes;
+	private String[][] txtAdicionais;
 
 	
 	
@@ -45,35 +46,44 @@ public class TelaSubProdutos extends Activity {
 		nome = (TextView) findViewById(R.id.produto);
 		preco = (TextView) findViewById(R.id.preco);
 		ingredientes = (ExpandableListView) findViewById(R.id.expandableListView1);
+		adicionais = (ExpandableListView) findViewById(R.id.expandableListView2);
 		
 		//setando texto da ExpandableListView
-		txtProduto = new String[] {"Ingredientes", "Adcionais"};
+		txtProduto = new String[] {"Ingredientes","Adicionais"};
 		
 		//depois pegar isso aqui do banco...
 		vetorIngredientes = pegarNomesIngredientes(i.getProduto().getIngredientes());
 		vetorAdicionais = pegarNomesAdicionais(i.getProduto().getAdicionais());
-		txtIngredientes = new String[][]{vetorIngredientes, vetorAdicionais};
+		
+		txtIngredientes = new String[2][vetorAdicionais.length+vetorIngredientes.length];
+		txtIngredientes[0] = vetorIngredientes;
+		txtIngredientes[1] = vetorAdicionais;
+		//txtAdicionais = new String[][]{vetorAdicionais};
 		
 		adapter = new CategoriaAdapter(this, txtProduto, txtIngredientes);
 		ingredientes.setAdapter(adapter);
 		
 		
+		//txtProduto = new String[]{"Adicionais"};
+		//adapter = new CategoriaAdapter(this, txtProduto, txtAdicionais);
+		//adicionais.setAdapter(adapter);
+		
 		nome.setText(i.getProduto().getNome());
 		preco.setText("R$: "+i.getProduto().getPreco());
-		i.getProduto().getIngredientes().toArray();
+		//i.getProduto().getIngredientes().toArray();
 
 	}
 
 	private String[] pegarNomesIngredientes(List<Ingrediente> itens) {
 		String[] nomes = new String[itens.size()];
-		for(int i = 0; i<= itens.size();i++ ){
+		for(int i = 0; i< itens.size();i++ ){
 			nomes[i] = itens.get(i).toString();
 		}
 		return nomes;
 	}
 	private String[] pegarNomesAdicionais(List<Adicional> itens) {
 		String[] nomes = new String[itens.size()];
-		for(int i = 0; i<= itens.size();i++ ){
+		for(int i = 0; i< itens.size();i++ ){
 			nomes[i] = itens.get(i).toString();
 		}
 		return nomes;

@@ -8,20 +8,31 @@ import com.macaxeira.model.Ingrediente;
 
 public class Produto implements Serializable {
 
+
+	private static final long serialVersionUID = 1L;
 	private String nome;
 	private int codProduto;
 	private int codCategoria;
 	private double preco;
+	private List<Ingrediente> ingredientes;
+	private List<Adicional> adicionais;
+	
+	public Produto(){
+		super();
+	}
+
+
 	public double getPreco() {
 		return preco;
 	}
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
-	private List<Ingrediente> ingredientes;
-	private List<Adicional> adicionais;
-	
+
 	public List<Adicional> getAdicionais() {
 		return adicionais;
 	}

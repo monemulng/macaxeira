@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.macaxeira.DAO.CategoriaDAO;
 import com.macaxeira.DAO.CategoriaDAOImpl;
+import com.macaxeira.mock.CategoriaDaoMock;
 import com.macaxeira.model.Categoria;
 import com.macaxeira.model.Produto;
 import com.macaxeira.util.MyApp;
@@ -25,7 +26,7 @@ public class TelaProdutos extends Activity implements OnItemClickListener{
 	
 	ListView lista;
 	//private int cod;
-	private CategoriaDAO catDao= new CategoriaDAOImpl();
+	private CategoriaDAO catDao= new CategoriaDaoMock();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

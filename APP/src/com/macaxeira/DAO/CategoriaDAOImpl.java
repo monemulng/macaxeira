@@ -76,7 +76,7 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 		
 		categ.setCodCategoria(id);
 		
-		Cursor cursor = db.rawQuery("SELECT * FROM categoria WHERE _id=" + id + ";" , null);
+		Cursor cursor = db.rawQuery("SELECT * FROM Categoria WHERE _id=" + id + ";" , null);
 		
 		cursor.moveToFirst();
 		

@@ -1,9 +1,15 @@
 package com.macaxeira.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Categoria {
+public class Categoria implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private int codCategoria;
 	private String nome;
 	private List<Produto> produtos = new ArrayList<Produto>();
@@ -14,6 +20,9 @@ public class Categoria {
 	}
 	public Categoria(){
 		super();
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	public List<Produto> getProdutos() {
 		return produtos;

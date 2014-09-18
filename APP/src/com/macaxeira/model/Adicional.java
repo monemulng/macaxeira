@@ -1,10 +1,23 @@
 package com.macaxeira.model;
 
-public class Adicional {
+import java.io.Serializable;
+
+public class Adicional implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private String nome;
 	private int id;
 	private double preco;
 
+	public Adicional(){
+		super();
+	}
 	public String getNome() {
 		return nome;
 	}

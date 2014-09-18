@@ -2,10 +2,15 @@ package com.macaxeira.mock;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
 import com.macaxeira.DAO.CategoriaDAO;
 import com.macaxeira.model.Categoria;
 
 public class CategoriaDaoMock implements CategoriaDAO {	
+	
 	
 	@Override
 	public void createCategoria(Categoria categ) {		
@@ -45,8 +50,16 @@ public class CategoriaDaoMock implements CategoriaDAO {
 
 	@Override
 	public Categoria buscarCategoriaPorId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Categoria categ = new Categoria();
+		
+		categ.setCodCategoria(id);
+		
+		categ.setNome("Categoria Teste");
+		ProdutoDaoMock prodDao = new ProdutoDaoMock();
+		categ.setProdutos(prodDao.buscarProdutoPorCategoria(categ));
+		
+		return categ;
 	}
 	
 
