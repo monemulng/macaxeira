@@ -9,6 +9,7 @@ public class Ingrediente implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String nome;
+	private boolean isSelected = true;
 	private int codIngrediente;
 	public Ingrediente(){
 		super();
@@ -35,5 +36,13 @@ public class Ingrediente implements Serializable {
 
 	public String toString() {
 		return nome;
+	}
+
+	public boolean isSelected() {
+		return isSelected;
+	}
+
+	public void setSelected(boolean isSelected) {
+		this.isSelected = isSelected;
 	}
 }

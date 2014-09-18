@@ -7,16 +7,16 @@ public class Adicional implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
 	private String nome;
 	private int id;
 	private double preco;
-
+	private boolean isSelected = false;
 	public Adicional(){
 		super();
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	public String getNome() {
 		return nome;
@@ -44,6 +44,12 @@ public class Adicional implements Serializable{
 
 	public void setPreco(double preco) {
 		this.preco = preco;
+	}
+	public boolean isSelected() {
+		return isSelected;
+	}
+	public void setSelected(boolean isSelected) {
+		this.isSelected = isSelected;
 	}
 
 }
