@@ -97,7 +97,7 @@ public class AdicionalDAOImpl implements AdicionalDAO {
 		
 		cursor.close();
 		
-		for (int i = 0; i <= listaId.size(); i++){
+		for (int i = 0; i < listaId.size(); i++){
 			
 			cursor = db.rawQuery("SELECT * FROM adicional WHERE _id=" +
 							 listaId.get(i) + ";", null);

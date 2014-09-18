@@ -104,10 +104,12 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 		for(int i = 1; i <= cursor.getCount(); i++){
 			int idProd = cursor.getInt(0);
 			String nomeProd = cursor.getString(1);
+			double precoProd = cursor.getDouble(2);
 			
 			Produto p = new Produto();
 			p.setCodProduto(idProd);
 			p.setNome(nomeProd);
+			p.setPreco(precoProd);
 			p.setIngredientes(ingDao.buscarIngredientePorProduto(p));
 			p.setAdicionais(adcDao.buscarAdicionalPorProduto(p));
 			

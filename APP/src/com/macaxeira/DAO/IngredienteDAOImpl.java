@@ -93,7 +93,7 @@ public class IngredienteDAOImpl implements IngredienteDAO {
 		
 		cursor.close();
 		
-		for (int i = 0; i <= listaId.size(); i++){
+		for (int i = 0; i < listaId.size(); i++){
 			
 			cursor = db.rawQuery("SELECT * FROM ingrediente WHERE _id=" +
 							 listaId.get(i) + ";", null);

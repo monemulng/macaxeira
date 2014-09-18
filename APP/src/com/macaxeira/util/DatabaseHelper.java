@@ -19,143 +19,79 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		Log.i("TESTE DE BANCO", "Entrou");
 		
-		db.execSQL("DROP TABLE IF EXISTS `mydb`.`Categoria` ;"
-				+ "CREATE TABLE IF NOT EXISTS `mydb`.`Categoria` ("
-				+ "`_id` INT NOT NULL AUTO_INCREMENT,"
-				+ "`nome` TEXT NOT NULL,"
-				+ "`del` TINYINT(1) NULL DEFAULT 0"
-				+ " `dataUpdate` TIMESTAMP NULL,"
-				+ "PRIMARY KEY (`_id`));");
+		db.execSQL("CREATE TABLE categoria ("
+				+ "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+				+ "nome TEXT NOT NULL);");
 		
-		db.execSQL("DROP TABLE IF EXISTS `mydb`.`Produto` ;"
-				+ "CREATE TABLE IF NOT EXISTS `mydb`.`Produto` ("
-				+ "`_id` INT NOT NULL AUTO_INCREMENT"
-				+ " `nome` TEXT NOT NULL"
-				+ " `preco` DOUBLE NOT NULL,"
-				+ "`categoria_id` INT NOT NULL,"
-				+ " `del` TINYINT(1) NULL DEFAULT 0,"
-				+ " `dataUpdate` TIMESTAMP NULL,"
-				+ "PRIMARY KEY (`_id`),"
-				+ "INDEX `fk_Produto_Categoria_idx` (`categoria_id` ASC)"
-				+ " CONSTRAINT `fk_Produto_Categoria`"
-				+ " FOREIGN KEY (`categoria_id`)"
-				+ " REFERENCES `mydb`.`Categoria` (`_id`)"
-				+ " ON DELETE NO ACTION"
-				+ " ON UPDATE NO ACTION);");
+		db.execSQL("CREATE TABLE produto ("
+				+ "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+				+ "nome TEXT NOT NULL, "
+				+ "preco DOUBLE NOT NULL, "
+				+ "categoria_id INTEGER NOT NULL, "
+				+ "FOREIGN KEY (categoria_id) "
+				+ "REFERENCES categoria (_id));");
 		
-		db.execSQL("DROP TABLE IF EXISTS `mydb`.`Ingrediente` ;"
-				+ "CREATE TABLE IF NOT EXISTS `mydb`.`Ingrediente` ("
-				+ "`_id` INT NOT NULL AUTO_INCREMENT,"
-				+ "`nome` TEXT NOT NULL,"
-				+ "`del` TINYINT(1) NULL DEFAULT 0,"
-				+ "`dataUpdate` TIMESTAMP NULL,"
-				+ "PRIMARY KEY (`_id`));");
+		db.execSQL("CREATE TABLE ingrediente ("
+				+ "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+				+ "nome TEXT NOT NULL);");
 		
-		db.execSQL("DROP TABLE IF EXISTS `mydb`.`Produto_has_Ingrediente` ;"
-				+ "CREATE TABLE IF NOT EXISTS `mydb`.`Produto_has_Ingrediente` ("
-				+ "`Produto_id` INT NOT NULL,"
-				+ " `Ingrediente_id` INT NOT NULL,"
-				+ " PRIMARY KEY (`Produto_id`, `Ingrediente_id`),"
-				+ " INDEX `fk_Produto_has_Ingrediente_Ingrediente1_idx` (`Ingrediente_id` ASC),"
-				+ " INDEX `fk_Produto_has_Ingrediente_Produto1_idx` (`Produto_id` ASC),"
-				+ " CONSTRAINT `fk_Produto_has_Ingrediente_Produto1`"
-				+ "FOREIGN KEY (`Produto_id`)"
-				+ " REFERENCES `mydb`.`Produto` (`_id`)"
-				+ " ON DELETE NO ACTION"
-				+ " ON UPDATE NO ACTION,"
-				+ " CONSTRAINT `fk_Produto_has_Ingrediente_Ingrediente1`"
-				+ " FOREIGN KEY (`Ingrediente_id`)"
-				+ " REFERENCES `mydb`.`Ingrediente` (`_id`)"
-				+ "ON DELETE NO ACTION"
-				+ "ON UPDATE NO ACTION);");
+		db.execSQL("CREATE TABLE produto_has_Ingrediente ("
+				+ "produto_id INTEGER NOT NULL, "
+				+ "ingrediente_id INTEGER NOT NULL, "
+				+ "PRIMARY KEY (produto_id, ingrediente_id), "
+				+ "FOREIGN KEY (produto_id) "
+				+ "REFERENCES produto (_id), "
+				+ "FOREIGN KEY (ingrediente_id) "
+				+ "REFERENCES ingrediente (_id));");
 		
-		db.execSQL("DROP TABLE IF EXISTS `mydb`.`Adicional` ;"
-				+ "CREATE TABLE IF NOT EXISTS `mydb`.`Adicional` ("
-				+ " `_id` INT NOT NULL AUTO_INCREMENT,"
-				+ " `nome` TEXT NOT NULL,"
-				+ " `preco` DOUBLE NOT NULL,"
-				+ " `del` TINYINT(1) NULL DEFAULT 0,"
-				+ " `dataUpdate` TIMESTAMP NULL,"
-				+ " PRIMARY KEY (`_id`));");
+		db.execSQL("CREATE TABLE adicional ("
+				+ "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+				+ "nome TEXT NOT NULL, "
+				+ "preco DOUBLE NOT NULL);");
 		
-		db.execSQL("DROP TABLE IF EXISTS `mydb`.`Produto_has_Adicional` ;"
-				+ "CREATE TABLE IF NOT EXISTS `mydb`.`Produto_has_Adicional` ("
-				+ "`Produto_id` INT NOT NULL,"
-				+ "`Adicional_id` INT NOT NULL,"
-				+ "PRIMARY KEY (`Produto_id`, `Adicional_id`),"
-				+ "INDEX `fk_Produto_has_Adicional_Adicional1_idx` (`Adicional_id` ASC),"
-				+ "INDEX `fk_Produto_has_Adicional_Produto1_idx` (`Produto_id` ASC),"
-				+ "CONSTRAINT `fk_Produto_has_Adicional_Produto1`"
-				+ "FOREIGN KEY (`Produto_id`)"
-				+ "REFERENCES `mydb`.`Produto` (`_id`)"
-				+ "ON DELETE NO ACTION"
-				+ "ON UPDATE NO ACTION,"
-				+ " CONSTRAINT `fk_Produto_has_Adicional_Adicional1`"
-				+ " FOREIGN KEY (`Adicional_id`)"
-				+ "REFERENCES `mydb`.`Adicional` (`_id`)"
-				+ "ON DELETE NO ACTION"
-				+ "ON UPDATE NO ACTION);");
+		db.execSQL("CREATE TABLE produto_has_Adicional ("
+				+ "produto_id INTEGER NOT NULL, "
+				+ "adicional_id INTEGER NOT NULL, "
+				+ "PRIMARY KEY (produto_id, adicional_id), "
+				+ "FOREIGN KEY (produto_id) "
+				+ "REFERENCES produto (_id), "
+				+ "FOREIGN KEY (adicional_id) "
+				+ "REFERENCES adicional (_id));");
 		
-		db.execSQL("DROP TABLE IF EXISTS `mydb`.`Pedido` ;"
-				+ "CREATE TABLE IF NOT EXISTS `mydb`.`Pedido` ("
-				+ "`_id` INT NOT NULL AUTO_INCREMENT,"
-				+ "`preco` DOUBLE NOT NULL,"
-				+ "PRIMARY KEY (`_id`));");
+		db.execSQL("CREATE TABLE pedido ("
+				+ "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+				+ "preco DOUBLE NOT NULL);");
 		
-		db.execSQL("DROP TABLE IF EXISTS `mydb`.`Item_Pedido` ;"
-				+ "CREATE TABLE IF NOT EXISTS `mydb`.`Item_Pedido` ("
-				+ "`Item_Pedido_id` INT NOT NULL,"
-				+ "`Pedido_id` INT NOT NULL,"
-				+ "`Produto_id` INT NOT NULL,"
-				+ "`Preco` DOUBLE NULL,"
-				+ "PRIMARY KEY (`Item_Pedido_id`, `Pedido_id`, `Produto_id`),"
-				+ "INDEX `fk_Pedido_has_Produto_Produto1_idx` (`Produto_id` ASC),"
-				+ "INDEX `fk_Pedido_has_Produto_Pedido1_idx` (`Pedido_id` ASC),"
-				+ "CONSTRAINT `fk_Pedido_has_Produto_Pedido1`"
-				+ "FOREIGN KEY (`Pedido_id`)"
-				+ "REFERENCES `mydb`.`Pedido` (`_id`)"
-				+ "ON DELETE NO ACTION"
-				+ "ON UPDATE NO ACTION,"
-				+ "CONSTRAINT `fk_Pedido_has_Produto_Produto1`"
-				+ "FOREIGN KEY (`Produto_id`)"
-				+ "REFERENCES `mydb`.`Produto` (`_id`)"
-				+ "ON DELETE NO ACTION"
-				+ "ON UPDATE NO ACTION);");
+		db.execSQL("CREATE TABLE item_Pedido ("
+				+ "item_Pedido_id INTEGER NOT NULL, "
+				+ "pedido_id INTEGER NOT NULL, "
+				+ "produto_id INTEGER NOT NULL, "
+				+ "preco DOUBLE NULL, "
+				+ "PRIMARY KEY (item_Pedido_id, pedido_id, produto_id), "
+				+ "FOREIGN KEY (pedido_id) "
+				+ "REFERENCES Pedido (_id), "
+				+ "FOREIGN KEY (produto_id) "
+				+ "REFERENCES produto (_id));");
 		
-		db.execSQL("DROP TABLE IF EXISTS `mydb`.`Ingrediente_Excluido` ;"
-				+ "CREATE TABLE IF NOT EXISTS `mydb`.`Ingrediente_Excluido` ("
-				+ "`Item_Pedido_id` INT NOT NULL,"
-				+ "`Ingrediente_id` INT NOT NULL,"
-				+ "PRIMARY KEY (`Item_Pedido_id`, `Ingrediente_id`),"
-				+ "INDEX `fk_Item_Pedido_has_Ingrediente_Ingrediente1_idx` (`Ingrediente_id` ASC),"
-				+ "INDEX `fk_Item_Pedido_has_Ingrediente_Item_Pedido1_idx` (`Item_Pedido_id` ASC),"
-				+ "CONSTRAINT `fk_Item_Pedido_has_Ingrediente_Item_Pedido1`"
-				+ "FOREIGN KEY (`Item_Pedido_id`)"
-				+ "REFERENCES `mydb`.`Item_Pedido` (`Item_Pedido_id`)"
-				+ "ON DELETE NO ACTION"
-				+ "ON UPDATE NO ACTION,"
-				+ "CONSTRAINT `fk_Item_Pedido_has_Ingrediente_Ingrediente1`"
-				+ "FOREIGN KEY (`Ingrediente_id`)"
-				+ "REFERENCES `mydb`.`Ingrediente` (`_id`)"
-				+ "ON DELETE NO ACTION"
-				+ "ON UPDATE NO ACTION);");
+		db.execSQL("DROP TABLE IF EXISTS ingrediente_Excluido ;"
+				+ "CREATE TABLE IF NOT EXISTS ingrediente_Excluido ("
+				+ "item_Pedido_id INTEGER NOT NULL, "
+				+ "ingrediente_id INTEGER NOT NULL, "
+				+ "PRIMARY KEY (item_Pedido_id, ingrediente_id), "
+				+ "FOREIGN KEY (item_Pedido_id) "
+				+ "REFERENCES item_Pedido (item_Pedido_id), "
+				+ "FOREIGN KEY (ingrediente_id) "
+				+ "REFERENCES ingrediente (_id);");
 		
-		db.execSQL("DROP TABLE IF EXISTS `mydb`.`Item_Pedido_has_Adicional` ;"
-				+ "CREATE TABLE IF NOT EXISTS `mydb`.`Item_Pedido_has_Adicional` ("
-				+ "`Item_Pedido_id` INT NOT NULL,"
-				+ "`Adicional_id` INT NOT NULL,"
-				+ "PRIMARY KEY (`Item_Pedido_id`, `Adicional_id`),"
-				+ "INDEX `fk_Item_Pedido_has_Adicional_Adicional1_idx` (`Adicional_id` ASC),"
-				+ "INDEX `fk_Item_Pedido_has_Adicional_Item_Pedido1_idx` (`Item_Pedido_id` ASC),"
-				+ "CONSTRAINT `fk_Item_Pedido_has_Adicional_Item_Pedido1`"
-				+ "FOREIGN KEY (`Item_Pedido_id`)"
-				+ "REFERENCES `mydb`.`Item_Pedido` (`Item_Pedido_id`)"
-				+ "ON DELETE NO ACTION"
-				+ "ON UPDATE NO ACTION,"
-				+ "CONSTRAINT `fk_Item_Pedido_has_Adicional_Adicional1`"
-				+ "FOREIGN KEY (`Adicional_id`)"
-				+ "REFERENCES `mydb`.`Adicional` (`_id`)"
-				+ "ON DELETE NO ACTION);");
+		db.execSQL("DROP TABLE IF EXISTS item_Pedido_has_Adicional ;"
+				+ "CREATE TABLE IF NOT EXISTS item_Pedido_has_Adicional ("
+				+ "item_Pedido_id INTEGER NOT NULL, "
+				+ "adicional_id INTEGER NOT NULL, "
+				+ "PRIMARY KEY (item_Pedido_id, adicional_id), "
+				+ "FOREIGN KEY (item_Pedido_id) "
+				+ "REFERENCES item_Pedido (item_Pedido_id), "
+				+ "FOREIGN KEY (adicional_id) "
+				+ "REFERENCES adicional (_id));");
 		
 		ContentValues values = new ContentValues();
 		
@@ -196,7 +132,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 		values.put("categoria_id", 2);
 		db.insert("produto", null, values);
 		values.clear();
-	
+		
 		values.put("nome", "Pao");
 		db.insert("ingrediente", null, values);
 		values.clear();
@@ -239,140 +175,140 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 		db.insert("adicional", null, values);
 		values.clear();
 		
-		values.put("Produto_id", 1);
-		values.put("Ingrediente_id", 1);
-		db.insert("Produto_has_Ingrediente", null, values);
+		values.put("produto_id", 1);
+		values.put("ingrediente_id", 1);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
-		values.put("Produto_id", 1);
-		values.put("Ingrediente_id", 2);
-		db.insert("Produto_has_Ingrediente", null, values);
+		values.put("produto_id", 1);
+		values.put("ingrediente_id", 2);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
-		values.put("Produto_id", 1);
-		values.put("Ingrediente_id", 4);
-		db.insert("Produto_has_Ingrediente", null, values);
+		values.put("produto_id", 1);
+		values.put("ingrediente_id", 4);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
-		values.put("Produto_id", 1);
-		values.put("Ingrediente_id", 5);
-		db.insert("Produto_has_Ingrediente", null, values);
+		values.put("produto_id", 1);
+		values.put("ingrediente_id", 5);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
-		values.put("Produto_id", 1);
-		values.put("Ingrediente_id", 6);
-		db.insert("Produto_has_Ingrediente", null, values);
-		values.clear();
-		
-		values.put("Produto_id", 2);
-		values.put("Ingrediente_id", 1);
-		db.insert("Produto_has_Ingrediente", null, values);
-		values.clear();
-		values.put("Produto_id", 2);
-		values.put("Ingrediente_id", 3);
-		db.insert("Produto_has_Ingrediente", null, values);
-		values.clear();
-		values.put("Produto_id", 2);
-		values.put("Ingrediente_id", 4);
-		db.insert("Produto_has_Ingrediente", null, values);
-		values.clear();
-		values.put("Produto_id", 2);
-		values.put("Ingrediente_id", 5);
-		db.insert("Produto_has_Ingrediente", null, values);
-		values.clear();
-		values.put("Produto_id", 2);
-		values.put("Ingrediente_id", 6);
-		db.insert("Produto_has_Ingrediente", null, values);
+		values.put("produto_id", 1);
+		values.put("ingrediente_id", 6);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
 		
-		values.put("Produto_id", 3);
-		values.put("Ingrediente_id", 1);
-		db.insert("Produto_has_Ingrediente", null, values);
+		values.put("produto_id", 2);
+		values.put("ingrediente_id", 1);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
-		values.put("Produto_id", 3);
-		values.put("Ingrediente_id", 2);
-		db.insert("Produto_has_Ingrediente", null, values);
+		values.put("produto_id", 2);
+		values.put("ingrediente_id", 3);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
-		values.put("Produto_id", 3);
-		values.put("Ingrediente_id", 6);
-		db.insert("Produto_has_Ingrediente", null, values);
+		values.put("produto_id", 2);
+		values.put("ingrediente_id", 4);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
-		values.put("Produto_id", 3);
-		values.put("Ingrediente_id", 7);
-		db.insert("Produto_has_Ingrediente", null, values);
+		values.put("produto_id", 2);
+		values.put("ingrediente_id", 5);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
-		
-		values.put("Produto_id", 4);
-		values.put("Ingrediente_id", 8);
-		db.insert("Produto_has_Ingrediente", null, values);
-		values.clear();
-		values.put("Produto_id", 5);
-		values.put("Ingrediente_id", 8);
-		db.insert("Produto_has_Ingrediente", null, values);
-		values.clear();
-		values.put("Produto_id", 6);
-		values.put("Ingrediente_id", 8);
-		db.insert("Produto_has_Ingrediente", null, values);
+		values.put("produto_id", 2);
+		values.put("ingrediente_id", 6);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
 		
-		values.put("Produto_id", 1);
-		values.put("Adicional_id", 1);
-		db.insert("Produto_has_Adicional", null, values);
+		values.put("produto_id", 3);
+		values.put("ingrediente_id", 1);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
-		values.put("Produto_id", 1);
-		values.put("Adicional_id", 2);
-		db.insert("Produto_has_Adicional", null, values);
+		values.put("produto_id", 3);
+		values.put("ingrediente_id", 2);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
-		values.put("Produto_id", 1);
-		values.put("Adicional_id", 3);
-		db.insert("Produto_has_Adicional", null, values);
+		values.put("produto_id", 3);
+		values.put("ingrediente_id", 6);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
-		values.put("Produto_id", 1);
-		values.put("Adicional_id", 4);
-		db.insert("Produto_has_Adicional", null, values);
-		values.clear();
-		
-		values.put("Produto_id", 2);
-		values.put("Adicional_id", 1);
-		db.insert("Produto_has_Adicional", null, values);
-		values.clear();
-		values.put("Produto_id", 2);
-		values.put("Adicional_id", 2);
-		db.insert("Produto_has_Adicional", null, values);
-		values.clear();
-		values.put("Produto_id", 2);
-		values.put("Adicional_id", 3);
-		db.insert("Produto_has_Adicional", null, values);
-		values.clear();
-		values.put("Produto_id", 2);
-		values.put("Adicional_id", 4);
-		db.insert("Produto_has_Adicional", null, values);
+		values.put("produto_id", 3);
+		values.put("ingrediente_id", 7);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
 		
-		values.put("Produto_id", 3);
-		values.put("Adicional_id", 1);
-		db.insert("Produto_has_Adicional", null, values);
+		values.put("produto_id", 4);
+		values.put("ingrediente_id", 8);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
-		values.put("Produto_id", 3);
-		values.put("Adicional_id", 2);
-		db.insert("Produto_has_Adicional", null, values);
+		values.put("produto_id", 5);
+		values.put("ingrediente_id", 8);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
-		values.put("Produto_id", 3);
-		values.put("Adicional_id", 3);
-		db.insert("Produto_has_Adicional", null, values);
-		values.clear();
-		values.put("Produto_id", 3);
-		values.put("Adicional_id", 4);
-		db.insert("Produto_has_Adicional", null, values);
+		values.put("produto_id", 6);
+		values.put("ingrediente_id", 8);
+		db.insert("produto_has_Ingrediente", null, values);
 		values.clear();
 		
-		values.put("Produto_id", 4);
-		values.put("Adicional_id", 2);
-		db.insert("Produto_has_Adicional", null, values);
+		values.put("produto_id", 1);
+		values.put("adicional_id", 1);
+		db.insert("produto_has_Adicional", null, values);
 		values.clear();
-		values.put("Produto_id", 5);
-		values.put("Adicional_id", 2);
-		db.insert("Produto_has_Adicional", null, values);
+		values.put("produto_id", 1);
+		values.put("adicional_id", 2);
+		db.insert("produto_has_Adicional", null, values);
 		values.clear();
-		values.put("Produto_id", 6);
-		values.put("Adicional_id", 2);
-		db.insert("Produto_has_Adicional", null, values);
+		values.put("produto_id", 1);
+		values.put("adicional_id", 3);
+		db.insert("produto_has_Adicional", null, values);
+		values.clear();
+		values.put("produto_id", 1);
+		values.put("adicional_id", 4);
+		db.insert("produto_has_Adicional", null, values);
+		values.clear();
+		
+		values.put("produto_id", 2);
+		values.put("adicional_id", 1);
+		db.insert("produto_has_Adicional", null, values);
+		values.clear();
+		values.put("produto_id", 2);
+		values.put("adicional_id", 2);
+		db.insert("produto_has_Adicional", null, values);
+		values.clear();
+		values.put("produto_id", 2);
+		values.put("adicional_id", 3);
+		db.insert("produto_has_Adicional", null, values);
+		values.clear();
+		values.put("produto_id", 2);
+		values.put("adicional_id", 4);
+		db.insert("produto_has_Adicional", null, values);
+		values.clear();
+		
+		values.put("produto_id", 3);
+		values.put("adicional_id", 1);
+		db.insert("produto_has_Adicional", null, values);
+		values.clear();
+		values.put("produto_id", 3);
+		values.put("adicional_id", 2);
+		db.insert("produto_has_Adicional", null, values);
+		values.clear();
+		values.put("produto_id", 3);
+		values.put("adicional_id", 3);
+		db.insert("produto_has_Adicional", null, values);
+		values.clear();
+		values.put("produto_id", 3);
+		values.put("adicional_id", 4);
+		db.insert("produto_has_Adicional", null, values);
+		values.clear();
+		
+		values.put("produto_id", 4);
+		values.put("adicional_id", 2);
+		db.insert("produto_has_Adicional", null, values);
+		values.clear();
+		values.put("produto_id", 5);
+		values.put("adicional_id", 2);
+		db.insert("produto_has_Adicional", null, values);
+		values.clear();
+		values.put("produto_id", 6);
+		values.put("adicional_id", 2);
+		db.insert("produto_has_Adicional", null, values);
 		values.clear();
 	}
 

@@ -26,7 +26,7 @@ public class TelaProdutos extends Activity implements OnItemClickListener{
 	
 	ListView lista;
 	//private int cod;
-	private CategoriaDAO catDao= new CategoriaDaoMock();
+	private CategoriaDAO catDao= new CategoriaDAOImpl();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
