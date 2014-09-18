@@ -1,0 +1,6 @@
+expListView = (ExpandableListView) getActivity().findViewById(
+            android.R.id.list);
+    DisplayMetrics metrics = new DisplayMetrics();
+    getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+    int width = metrics.widthPixels; 
+    expListView.setIndicatorBounds(width - UIUtils.getPxFromDp(getActivity(), 40), width - UIUtils.getPxFromDp(getActivity(),20)); 
