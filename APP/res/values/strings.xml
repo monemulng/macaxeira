@@ -18,5 +18,6 @@
     <string name="produto">Produto</string>
     <string name="addProduto">+</string>
     <string name="okProduto"> OK </string>
+    <string name="title_activity_main_activity2">MainActivity2</string>
 
 </resources>

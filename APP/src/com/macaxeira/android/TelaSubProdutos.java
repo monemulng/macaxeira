@@ -1,9 +1,11 @@
 package com.macaxeira.android;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
+
 import android.app.Activity;
+import android.app.ExpandableListActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Menu;
@@ -46,8 +48,7 @@ public class TelaSubProdutos extends Activity {
 	
 		nome = (TextView) findViewById(R.id.produto);
 		preco = (TextView) findViewById(R.id.preco);
-		ingredientes = (ExpandableListView) findViewById(R.id.expandableListView1);
-		setGroupIndicatorToRight();
+		ingredientes = (ExpandableListView) findViewById(R.id.list);
 		//adicionais = (ExpandableListView) findViewById(R.id.expandableListView2);
 		
 		//setando texto da ExpandableListView
@@ -96,19 +97,5 @@ public class TelaSubProdutos extends Activity {
 		getMenuInflater().inflate(R.menu.tela_subprodutos, menu);
 		return true;
 	}
-	private void setGroupIndicatorToRight() {
-        /* Get the screen width */
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int width = dm.widthPixels;
- 
-        ingredientes.setIndicatorBounds(width - getDipsFromPixel(35), width
-                - getDipsFromPixel(5));
-    }
-	private int getDipsFromPixel(float pixels) {
-        // Get the screen's density scale
-        final float scale = getResources().getDisplayMetrics().density;
-        // Convert the dps to pixels, based on density scale
-        return (int) (pixels * scale + 0.5f);
-    }
+	
 }
