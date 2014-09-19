@@ -11,7 +11,7 @@ public class Adicional implements Serializable{
 	private String nome;
 	private int id;
 	private double preco;
-	private boolean isSelected = false;
+	private boolean isChecked = false;
 	public Adicional(){
 		super();
 	}
@@ -45,11 +45,10 @@ public class Adicional implements Serializable{
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-	public boolean isSelected() {
-		return isSelected;
+	public boolean isChecked() {
+		return isChecked;
 	}
-	public void setSelected(boolean isSelected) {
-		this.isSelected = isSelected;
+	public void setChecked(boolean isChecked) {
+		this.isChecked = isChecked;
 	}
-
 }

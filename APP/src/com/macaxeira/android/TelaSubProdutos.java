@@ -1,41 +1,30 @@
 package com.macaxeira.android;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
-
-import android.app.Activity;
 import android.app.ExpandableListActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.macaxeira.model.Adicional;
 import com.macaxeira.model.Ingrediente;
 import com.macaxeira.model.ItemPedido;
 import com.macaxeira.model.Produto;
-import com.macaxeira.util.CategoriaAdapter;
+import com.macaxeira.util.AdapterChild;
+import com.macaxeira.util.AdapterParent;
+import com.macaxeira.util.ExpandableAdapter;
 
-public class TelaSubProdutos extends Activity {
+public class TelaSubProdutos extends ExpandableListActivity {
 	private Produto p;
 	private ItemPedido i ;
-	
-	private ExpandableListView ingredientes;
-	private ExpandableListView adicionais;
 	private BaseExpandableListAdapter adapter;
 	
 	private TextView nome;
 	private TextView preco;
-	
-	private String[] txtProduto;
-	private String[] vetorIngredientes;
-	private String[] vetorAdicionais;
-	private String[][] txtIngredientes;
-	private String[][] txtAdicionais;
-
 	
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,33 +37,39 @@ public class TelaSubProdutos extends Activity {
 	
 		nome = (TextView) findViewById(R.id.produto);
 		preco = (TextView) findViewById(R.id.preco);
-		ingredientes = (ExpandableListView) findViewById(R.id.list);
-		//adicionais = (ExpandableListView) findViewById(R.id.expandableListView2);
-		
-		//setando texto da ExpandableListView
-		txtProduto = new String[] {"Ingredientes","Adicionais"};
-		
-		//depois pegar isso aqui do banco...
-		vetorIngredientes = pegarNomesIngredientes(i.getProduto().getIngredientes());
-		vetorAdicionais = pegarNomesAdicionais(i.getProduto().getAdicionais());
-		
-		txtIngredientes = new String[2][vetorAdicionais.length+vetorIngredientes.length];
-		txtIngredientes[0] = vetorIngredientes;
-		txtIngredientes[1] = vetorAdicionais;
-		//txtAdicionais = new String[][]{vetorAdicionais};
-		
-		adapter = new CategoriaAdapter(this, txtProduto, txtIngredientes);
-		ingredientes.setAdapter(adapter);
-		
-		
-		//txtProduto = new String[]{"Adicionais"};
-		//adapter = new CategoriaAdapter(this, txtProduto, txtAdicionais);
-		//adicionais.setAdapter(adapter);
 		
 		nome.setText(i.getProduto().getNome());
 		preco.setText("R$: "+i.getProduto().getPreco());
-		//i.getProduto().getIngredientes().toArray();
+		
+		ArrayList<AdapterChild> childsIngredientes = converterIEmAdapter(i.getProduto().getIngredientes());
+		ArrayList<AdapterChild> childsAdicionais = converterAEmAdapter(i.getProduto().getAdicionais());
+		
+		AdapterParent ingredientes = new AdapterParent("Ingredientes", childsIngredientes);
+		AdapterParent adicionais  = new AdapterParent("Adicionais", childsAdicionais);;
+		
+		ArrayList<AdapterParent> listas = new ArrayList<AdapterParent>();
+		listas.add(ingredientes);
+		listas.add(adicionais);
+		
+		loadHosts(listas);
+		
+	}
 
+	private ArrayList<AdapterChild> converterAEmAdapter(List<Adicional> adicionais) {
+		ArrayList<AdapterChild> children = new ArrayList<AdapterChild>();
+		for(Adicional a:adicionais){
+			children.add(new AdapterChild(a));
+		}
+		return children;
+	}
+
+	private ArrayList<AdapterChild> converterIEmAdapter(List<Ingrediente> ingredientes) {
+		ArrayList<AdapterChild> children = new ArrayList<AdapterChild>();
+		for(Ingrediente i:ingredientes){
+			children.add(new AdapterChild(i));
+		}
+		return children;
+	
 	}
 
 	private String[] pegarNomesIngredientes(List<Ingrediente> itens) {
@@ -96,6 +91,28 @@ public class TelaSubProdutos extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.tela_subprodutos, menu);
 		return true;
+	}
+	
+	private void loadHosts(final ArrayList<AdapterParent> newParents){
+		if (newParents == null)
+			return;
+		
+		//parents = newParents;
+		
+		// Check for ExpandableListAdapter object
+		if (this.getExpandableListAdapter() == null)
+		{
+			 //Create ExpandableListAdapter Object
+			final ExpandableAdapter mAdapter = new ExpandableAdapter(newParents);
+			
+			// Set Adapter to ExpandableList Adapter
+			this.setListAdapter(mAdapter);
+		}
+		else
+		{
+			 // Refresh ExpandableListView data 
+			((ExpandableAdapter)getExpandableListAdapter()).notifyDataSetChanged();
+		}	
 	}
 	
 }

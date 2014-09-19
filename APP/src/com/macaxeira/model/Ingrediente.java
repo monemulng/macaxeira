@@ -9,7 +9,7 @@ public class Ingrediente implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String nome;
-	private boolean isSelected = true;
+	private boolean isChecked = true;
 	private int codIngrediente;
 	public Ingrediente(){
 		super();
@@ -38,11 +38,11 @@ public class Ingrediente implements Serializable {
 		return nome;
 	}
 
-	public boolean isSelected() {
-		return isSelected;
+	public boolean isChecked() {
+		return isChecked;
 	}
 
-	public void setSelected(boolean isSelected) {
-		this.isSelected = isSelected;
+	public void setChecked(boolean isChecked) {
+		this.isChecked = isChecked;
 	}
 }

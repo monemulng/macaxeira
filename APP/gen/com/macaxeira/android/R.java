@@ -32,30 +32,31 @@ public final class R {
     }
     public static final class id {
         public static final int action_settings=0x7f080011;
-        public static final int addProduto=0x7f08000d;
+        public static final int addProduto=0x7f08000b;
         public static final int batata=0x7f080003;
-        public static final int cb_group=0x7f08000f;
-        public static final int expandableListView2=0x7f08000c;
+        public static final int checkbox=0x7f080010;
+        public static final int image=0x7f08000d;
         public static final int imageButton3=0x7f080005;
         public static final int imageView1=0x7f080006;
-        public static final int list=0x7f08000b;
         public static final int listaprodutos=0x7f080008;
         public static final int lupa=0x7f080004;
         public static final int mesa=0x7f080000;
         public static final int mesaNumero=0x7f080001;
-        public static final int mtopicsgrouptv=0x7f080010;
-        public static final int okProduto=0x7f08000e;
+        public static final int okProduto=0x7f08000c;
         public static final int preco=0x7f080009;
         public static final int produto=0x7f08000a;
         public static final int progressBar1=0x7f080007;
         public static final int sanduba=0x7f080002;
+        public static final int text=0x7f08000f;
+        public static final int text1=0x7f08000e;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_splash=0x7f030001;
         public static final int activity_tela_produtos=0x7f030002;
         public static final int activity_tela_subprodutos=0x7f030003;
-        public static final int list_item_child=0x7f030004;
+        public static final int child_row=0x7f030004;
+        public static final int parent_row=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f070000;
