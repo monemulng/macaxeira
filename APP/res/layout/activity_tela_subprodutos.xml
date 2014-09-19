@@ -44,11 +44,11 @@
         android:orientation="horizontal" >
 
         <ExpandableListView
-            android:id="@android:id/list"
+            android:id="@+id/lista"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="230dp" >
         </ExpandableListView>
+
     </LinearLayout>
 
     <LinearLayout

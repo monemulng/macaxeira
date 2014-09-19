@@ -4,10 +4,12 @@ package com.macaxeira.android;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
 import android.app.ExpandableListActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.macaxeira.model.Adicional;
@@ -18,10 +20,10 @@ import com.macaxeira.util.AdapterChild;
 import com.macaxeira.util.AdapterParent;
 import com.macaxeira.util.ExpandableAdapter;
 
-public class TelaSubProdutos extends ExpandableListActivity {
+public class TelaSubProdutos extends Activity {
 	private Produto p;
 	private ItemPedido i ;
-	private BaseExpandableListAdapter adapter;
+	private ExpandableListView expListView;
 	
 	private TextView nome;
 	private TextView preco;
@@ -35,6 +37,7 @@ public class TelaSubProdutos extends ExpandableListActivity {
 		i = new ItemPedido();
 		i.setProduto(p);
 	
+		expListView = (ExpandableListView) findViewById(R.id.lista);
 		nome = (TextView) findViewById(R.id.produto);
 		preco = (TextView) findViewById(R.id.preco);
 		
@@ -100,18 +103,18 @@ public class TelaSubProdutos extends ExpandableListActivity {
 		//parents = newParents;
 		
 		// Check for ExpandableListAdapter object
-		if (this.getExpandableListAdapter() == null)
+		if (expListView.getExpandableListAdapter() == null)
 		{
 			 //Create ExpandableListAdapter Object
 			final ExpandableAdapter mAdapter = new ExpandableAdapter(newParents);
 			
 			// Set Adapter to ExpandableList Adapter
-			this.setListAdapter(mAdapter);
+			expListView.setAdapter(mAdapter);
 		}
 		else
 		{
 			 // Refresh ExpandableListView data 
-			((ExpandableAdapter)getExpandableListAdapter()).notifyDataSetChanged();
+			((ExpandableAdapter)expListView.getExpandableListAdapter()).notifyDataSetChanged();
 		}	
 	}
 	
