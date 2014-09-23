@@ -32,6 +32,7 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 	public void buscar(View v){
+		
 		SearchView s = (SearchView)v;
 		Produto p = prodDao.buscarProdutoPorId(Integer.parseInt(s.getQuery().toString()));
 		if(p == null){
