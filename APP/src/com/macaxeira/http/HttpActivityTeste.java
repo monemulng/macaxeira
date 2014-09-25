@@ -33,21 +33,27 @@ public class HttpActivityTeste extends Activity implements HttpClientListener{
 		
 		task.addHttpClientListener(this);
 		
-		task.execute("http://192.168.25.8:8080/macaxeira/categoria/read?id="+categoriaId.getText().toString());
-		
-		//veja que a thread principal continua
-		for(int i =0;i<10000;i++);
+		task.execute("http://10.2.236.191:8080/macaxeira/categoria/read?id="+categoriaId.getText().toString());
 		
 		
 	}
 
 	@Override
 	public void updateHttpClientListener(String result) {
-		Log.i("Json : ", result);
+		
 		
 		Categoria c = gson.fromJson(result, Categoria.class);
 		
 		categoriaNome.setText(c.getNome());
+		
+		/*
+		JsonElement jelement = new JsonParser().parse(result);
+	    JsonObject  jobject = jelement.getAsJsonObject();
+	    jobject = jobject.getAsJsonObject("data");
+	    JsonArray jarray = jobject.getAsJsonArray("translations");
+	    jobject = jarray.get(0).getAsJsonObject();
+	    String produtos = jobject.get("translatedText").toString();
+	    */
 		
 	}
 
