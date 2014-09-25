@@ -4,11 +4,13 @@ package com.macaxeira.android;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import android.app.Activity;
 import android.app.ExpandableListActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.CompoundButton;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
@@ -75,21 +77,6 @@ public class TelaSubProdutos extends Activity {
 	
 	}
 
-	private String[] pegarNomesIngredientes(List<Ingrediente> itens) {
-		String[] nomes = new String[itens.size()];
-		for(int i = 0; i< itens.size();i++ ){
-			nomes[i] = itens.get(i).toString();
-		}
-		return nomes;
-	}
-	private String[] pegarNomesAdicionais(List<Adicional> itens) {
-		String[] nomes = new String[itens.size()];
-		for(int i = 0; i< itens.size();i++ ){
-			nomes[i] = itens.get(i).toString();
-		}
-		return nomes;
-	}
-
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.tela_subprodutos, menu);
@@ -99,16 +86,9 @@ public class TelaSubProdutos extends Activity {
 	private void loadHosts(final ArrayList<AdapterParent> newParents){
 		if (newParents == null)
 			return;
-		
-		//parents = newParents;
-		
-		// Check for ExpandableListAdapter object
 		if (expListView.getExpandableListAdapter() == null)
 		{
-			 //Create ExpandableListAdapter Object
-			final ExpandableAdapter mAdapter = new ExpandableAdapter(newParents);
-			
-			// Set Adapter to ExpandableList Adapter
+			final ExpandableAdapter mAdapter = new ExpandableAdapter(newParents, this);
 			expListView.setAdapter(mAdapter);
 		}
 		else
@@ -117,5 +97,11 @@ public class TelaSubProdutos extends Activity {
 			((ExpandableAdapter)expListView.getExpandableListAdapter()).notifyDataSetChanged();
 		}	
 	}
-	
+
+	public void mudarPreco() {
+		//Pegar o preço de todos os adicionais que estiver com isChecked true e botar no preco;
+		adisdasidasisdajiasdij;
+		
+	}
+
 }

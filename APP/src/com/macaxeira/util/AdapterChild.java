@@ -21,6 +21,9 @@ public class AdapterChild {
 		text1 = adicional.getNome();
 		isChecked = adicional.isChecked();
 	}
+	public AdapterChild(){
+		super();
+	}
 	public String getName()
 	{
 		return name;

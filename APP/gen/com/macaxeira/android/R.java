@@ -61,8 +61,9 @@ public final class R {
     public static final class menu {
         public static final int main=0x7f070000;
         public static final int splash=0x7f070001;
-        public static final int tela_produtos=0x7f070002;
-        public static final int tela_subprodutos=0x7f070003;
+        public static final int tela_pedido=0x7f070002;
+        public static final int tela_produtos=0x7f070003;
+        public static final int tela_subprodutos=0x7f070004;
     }
     public static final class string {
         public static final int Codigo=0x7f05000b;
@@ -80,6 +81,7 @@ public final class R {
         public static final int produto=0x7f05000e;
         public static final int title_activity_main_activity2=0x7f050011;
         public static final int title_activity_splash=0x7f05000c;
+        public static final int title_activity_tela_pedido=0x7f050012;
         public static final int title_activity_tela_produto=0x7f050005;
         public static final int title_activity_tela_produtos=0x7f050004;
         public static final int title_activity_tela_sanduiches=0x7f050003;

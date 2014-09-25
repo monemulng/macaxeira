@@ -50,6 +50,10 @@
             android:label="@string/title_activity_main_activity2"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.macaxeira.android.TelaPedido"
+            android:label="@string/title_activity_tela_pedido" >
+        </activity>
     </application>
 
 </manifest>
