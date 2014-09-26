@@ -22,7 +22,6 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
 	public ExpandableAdapter(ArrayList<AdapterParent> parents, TelaSubProdutos t) {
 		this.parents = parents;
 		this.t = t;
-		// Create Layout Inflator
 		inflater = LayoutInflater.from(MyApp.getAppContext());
 	}
 
@@ -37,18 +36,6 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
 
 		((TextView) convertView.findViewById(R.id.text1)).setText(parent
 				.getText1());
-		// ((TextView)
-		// convertView.findViewById(R.id.text)).setText(parent.getText2());
-
-		// Get grouprow.xml file checkbox elements
-		// CheckBox checkbox = (CheckBox)
-		// convertView.findViewById(R.id.checkbox);
-		// checkbox.setChecked(parent.isChecked());
-
-		// Set CheckUpdateListener for CheckBox (see below CheckUpdateListener
-		// class)
-		// checkbox.setOnCheckedChangeListener(new CheckUpdateListener(parent));
-
 		return convertView;
 	}
 
@@ -78,7 +65,6 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
 
 	@Override
 	public Object getChild(int groupPosition, int childPosition) {
-		// Log.i("Childs", groupPosition+"=  getChild =="+childPosition);
 		return parents.get(groupPosition).getChildren().get(childPosition);
 	}
 
@@ -86,9 +72,6 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
 	@Override
 	public long getChildId(int groupPosition, int childPosition) {
 		/****** When Child row clicked then this function call *******/
-
-		// Log.i("Noise",
-		// "parent == "+groupPosition+"=  child : =="+childPosition);
 		return childPosition;
 	}
 
@@ -115,12 +98,6 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
 	// Call when parent row clicked
 	@Override
 	public long getGroupId(int groupPosition) {
-		// Log.i("Parent", groupPosition+"=  getGroupId "+ParentClickStatus);
-
-		// ParentClickStatus=groupPosition;
-		// if(ParentClickStatus==0)
-		// ParentClickStatus=-1;
-
 		return groupPosition;
 	}
 
@@ -140,12 +117,12 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
 		return true;
 	}
 
-	@Override
+	
 	public boolean hasStableIds() {
 		return true;
 	}
 
-	@Override
+	
 	public boolean areAllItemsEnabled() {
 		return true;
 	}
@@ -162,7 +139,7 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
 			child.setChecked(isChecked);
 			notifyDataSetChanged();
 			if (child.getAdicional() != null) {
-				t.mudarPreco(child.getAdicional().getPreco());
+				t.mudarPreco();
 			}
 			final Boolean checked = child.isChecked();
 		}

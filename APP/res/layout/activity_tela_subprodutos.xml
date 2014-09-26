@@ -63,6 +63,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="left"
+            android:contentDescription="+"
+            android:onClick="adicionarNaLista"
             android:layout_weight="0.4"
             android:text="@string/addProduto" />
 
@@ -71,6 +73,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="right"
+            android:contentDescription="ok"
+            android:onClick="finalizarSelecao"
             android:layout_weight="0.5"
             android:text="@string/okProduto" />
     </LinearLayout>

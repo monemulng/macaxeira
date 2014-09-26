@@ -105,10 +105,12 @@ public class AdicionalDAOImpl implements AdicionalDAO {
 			cursor.moveToFirst();
 			
 			String nomeAdic = cursor.getString(1);
+			Double precoAdic = cursor.getDouble(2);
 			
 			Adicional adc = new Adicional();
 			adc.setId(listaId.get(i));
 			adc.setNome(nomeAdic);
+			adc.setPreco(precoAdic);
 			
 			listaAdic.add(adc);
 		}
