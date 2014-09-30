@@ -142,6 +142,7 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
 				t.mudarPreco();
 			}
 			final Boolean checked = child.isChecked();
+			Log.i("TESTANDO", child.getAdicional().toString() +checked);
 		}
 	}
 

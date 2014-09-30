@@ -44,7 +44,25 @@ public class TelaSubProdutos extends Activity {
 		nome = (TextView) findViewById(R.id.produto);
 		preco = (TextView) findViewById(R.id.preco);
 
-		marcarIeAPadroes();
+		nome.setText(i.getProduto().getNome());
+		preco.setText("R$: " + i.getProduto().getPreco());
+
+		ArrayList<AdapterChild> childsIngredientes = converterIEmAdapter(i
+				.getProduto().getIngredientes());
+		ArrayList<AdapterChild> childsAdicionais = converterAEmAdapter(i
+				.getProduto().getAdicionais());
+
+		AdapterParent ingredientes = new AdapterParent("Ingredientes",
+				childsIngredientes);
+		AdapterParent adicionais = new AdapterParent("Adicionais",
+				childsAdicionais);
+
+		listas = new ArrayList<AdapterParent>();
+		listas.add(ingredientes);
+		listas.add(adicionais);
+
+		carregarParentsNoAdapterDaLista(listas);
+
 	}
 
 	private ArrayList<AdapterChild> converterAEmAdapter(
@@ -72,23 +90,18 @@ public class TelaSubProdutos extends Activity {
 		return true;
 	}
 
-	private void loadHosts(final ArrayList<AdapterParent> newParents) {
-		if (newParents == null)
+	private void carregarParentsNoAdapterDaLista(
+			ArrayList<AdapterParent> newParents) {
+		if (newParents == null) {
 			return;
-		if (expListView.getExpandableListAdapter() == null) {
-			final ExpandableAdapter mAdapter = new ExpandableAdapter(
-					newParents, this);
-			expListView.setAdapter(mAdapter);
-		} else {
-			// Refresh ExpandableListView data
-			((ExpandableAdapter) expListView.getExpandableListAdapter())
-					.notifyDataSetChanged();
 		}
+		ExpandableAdapter mAdapter = new ExpandableAdapter(newParents, this);
+		expListView.setAdapter(mAdapter);
+
 	}
 
 	public void mudarPreco() {
 		double precoTotal = 0;
-
 		for (AdapterChild a : listas.get(1).getChildren()) {
 			if (a.isChecked()) {
 				precoTotal += a.getAdicional().getPreco();
@@ -108,32 +121,27 @@ public class TelaSubProdutos extends Activity {
 		itens.add(i);
 		Log.i("Adicionou", "Adicionou saporra");
 		if (v.getContentDescription().equals("+")) {
-			Toast.makeText(this, "Produto Adicionado!", Toast.LENGTH_SHORT).show();
-			marcarIeAPadroes();
+			Toast.makeText(this, "Produto Adicionado!", Toast.LENGTH_SHORT)
+					.show();
+			resetarLista();
 		}
 	}
 
-	private void marcarIeAPadroes() {
-		// seta os ingredientes e adicionais marcados como o padrão do produto
-		// que recebeu no parametro.
-		nome.setText(i.getProduto().getNome());
-		preco.setText("R$: " + i.getProduto().getPreco());
+	// private void marcarIeAPadroes() {
+	// seta os ingredientes e adicionais marcados como o padrão do produto
+	// que recebeu no parametro.
 
-		ArrayList<AdapterChild> childsIngredientes = converterIEmAdapter(i
-				.getProduto().getIngredientes());
-		ArrayList<AdapterChild> childsAdicionais = converterAEmAdapter(i
-				.getProduto().getAdicionais());
+	// }
 
-		AdapterParent ingredientes = new AdapterParent("Ingredientes",
-				childsIngredientes);
-		AdapterParent adicionais = new AdapterParent("Adicionais",
-				childsAdicionais);
-		;
-		listas = new ArrayList<AdapterParent>();
-		listas.add(ingredientes);
-		listas.add(adicionais);
+	private void resetarLista() {
+		for (AdapterChild a : listas.get(0).getChildren()) {
+			a.setChecked(true);
+		}
+		for (AdapterChild a : listas.get(1).getChildren()) {
+			a.setChecked(false);
+		}
+		mudarPreco();
 
-		loadHosts(listas);
 	}
 
 	private List<Ingrediente> pegarIngredientesNaoMarcados() {
@@ -155,11 +163,13 @@ public class TelaSubProdutos extends Activity {
 		}
 		return adic;
 	}
+
 	public void finalizarSelecao(View v) {
 		adicionarNaLista(v);
 
-		Intent i = new Intent(TelaSubProdutos.this, MainActivity.class);
-		i.putExtra("produtos", itens);
+		Intent i = getIntent();
+		i.setClass(TelaSubProdutos.this, MainActivity.class);
+		i.putExtra("itens", itens);
 		startActivity(i);
 	}
 

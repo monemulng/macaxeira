@@ -15,8 +15,8 @@
             android:id="@+id/mesa"
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_gravity="left|center_vertical"
             android:layout_weight="0.3"
+            android:layout_gravity="center"
             android:text="@string/Mesa"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -31,9 +31,17 @@
 
             <requestFocus />
         </EditText>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layoutCategorias"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -43,11 +51,10 @@
         <ImageButton
             android:id="@+id/sanduba"
             android:layout_width="0dip"
-            android:contentDescription="1"
             android:layout_height="match_parent"
-            android:layout_gravity="left|center_horizontal"
             android:layout_weight="0.5"
             android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="1"
             android:onClick="escolheCategoria"
             android:src="@drawable/icone_burger" />
 
@@ -61,13 +68,8 @@
             android:background="?android:attr/selectableItemBackground"
             android:onClick="escolheCategoria"
             android:src="@drawable/icone_batata" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="0.4"
-        android:orientation="horizontal" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

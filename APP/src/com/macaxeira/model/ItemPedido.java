@@ -34,4 +34,7 @@ public class ItemPedido implements Serializable{
 	public void setAdicionaisItem(List<Adicional> adicionaisItem) {
 		this.adicionaisItem = adicionaisItem;
 	}
+	public String toString() {
+		return produto.toString();
+	}
 }

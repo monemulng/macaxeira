@@ -46,6 +46,12 @@ public class AdapterChild {
 	
 	public void setChecked(boolean isChecked) {
 		this.isChecked = isChecked;
+		if(adicional!=null){
+			adicional.setChecked(isChecked);
+		}
+		if(ingrediente!=null){
+			ingrediente.setChecked(isChecked);
+		}
 	}
 
 	public Boolean isChecked() {
