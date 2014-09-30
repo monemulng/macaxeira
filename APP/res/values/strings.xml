@@ -20,5 +20,8 @@
     <string name="okProduto"> OK </string>
     <string name="title_activity_main_activity2">MainActivity2</string>
     <string name="title_activity_tela_pedido">TelaPedido</string>
+    <string name="pedido">Pedido:</string>
+    <string name="finalizar">Finalizar</string>
+    <string name="enviar">Enviar</string>
 
 </resources>

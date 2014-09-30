@@ -52,7 +52,8 @@
         </activity>
         <activity
             android:name="com.macaxeira.android.TelaPedido"
-            android:label="@string/title_activity_tela_pedido" >
+            android:label="@string/title_activity_tela_pedido"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 
