@@ -8,15 +8,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top"
-        android:orientation="horizontal" 
-        android:layout_weight="0.1">
+        android:layout_weight="0.1"
+        android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/mesa"
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="0.3"
             android:layout_gravity="center"
+            android:layout_weight="0.3"
             android:text="@string/Mesa"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -37,7 +37,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
         </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
@@ -45,8 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:orientation="horizontal" 
-        android:layout_weight="0.4">
+        android:layout_weight="0.4"
+        android:orientation="horizontal" >
 
         <ImageButton
             android:id="@+id/sanduba"
@@ -60,23 +59,22 @@
 
         <ImageButton
             android:id="@+id/batata"
-            android:contentDescription="2"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_gravity="right|center_horizontal"
             android:layout_weight="0.5"
             android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="2"
             android:onClick="escolheCategoria"
             android:src="@drawable/icone_batata" />
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:orientation="horizontal" 
-        android:layout_weight="0.1">
+        android:layout_weight="0.1"
+        android:orientation="horizontal" >
 
         <SearchView
             android:id="@+id/lupa"
@@ -86,8 +84,8 @@
             android:layout_marginTop="40dp"
             android:layout_weight="0.6"
             android:iconifiedByDefault="false"
-            android:queryHint="Código" 
-            android:onClick="buscar">
+            android:onClick="buscar"
+            android:queryHint="Código" >
         </SearchView>
 
         <ImageButton
@@ -97,8 +95,7 @@
             android:layout_gravity="right|bottom"
             android:layout_weight="0.4"
             android:background="?android:attr/selectableItemBackground"
-            android:src="@drawable/cesta50"
-             />
+            android:src="@drawable/cesta50" />
     </LinearLayout>
 
 </LinearLayout>
