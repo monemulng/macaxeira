@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.macaxeira.model.Adicional;
+import com.macaxeira.model.Atendimento;
 import com.macaxeira.model.Ingrediente;
 import com.macaxeira.model.ItemPedido;
 import com.macaxeira.model.Produto;
@@ -21,22 +22,26 @@ import com.macaxeira.util.AdapterParent;
 import com.macaxeira.util.ExpandableAdapter;
 
 public class TelaSubProdutos extends Activity {
+	
+	
+	private Atendimento a;
 	private Produto p;
 	private ItemPedido i;
+	
 	private ExpandableListView expListView;
-
 	private TextView nome;
 	private TextView preco;
-
+	
 	private ArrayList<AdapterParent> listas = new ArrayList<AdapterParent>();
-
 	private ArrayList<ItemPedido> itens = new ArrayList<ItemPedido>();
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tela_subprodutos);
+		
 		p = (Produto) getIntent().getExtras().getSerializable("produto");
-
+		a = (Atendimento) getIntent().getExtras().getSerializable("atendimento");
+		
 		i = new ItemPedido();
 		i.setProduto(p);
 
@@ -50,7 +55,7 @@ public class TelaSubProdutos extends Activity {
 		ArrayList<AdapterChild> childsIngredientes = converterIEmAdapter(i
 				.getProduto().getIngredientes());
 		ArrayList<AdapterChild> childsAdicionais = converterAEmAdapter(i
-				.getProduto().getAdicionais());
+				.getProduto().getAdicionals());
 
 		AdapterParent ingredientes = new AdapterParent("Ingredientes",
 				childsIngredientes);
@@ -62,7 +67,9 @@ public class TelaSubProdutos extends Activity {
 		listas.add(adicionais);
 
 		carregarParentsNoAdapterDaLista(listas);
-
+		
+		
+		
 	}
 
 	private ArrayList<AdapterChild> converterAEmAdapter(
@@ -115,8 +122,8 @@ public class TelaSubProdutos extends Activity {
 	public void adicionarNaLista(View v) {
 		ItemPedido i = new ItemPedido();
 		i.setProduto(p);
-		i.setAdicionaisItem(pegarAdicionaisMarcados());
-		i.setIngredientesExcluidos(pegarIngredientesNaoMarcados());
+		i.setAdicionals(pegarAdicionaisMarcados());
+		i.setIngredientes(pegarIngredientesNaoMarcados());
 
 		itens.add(i);
 		Log.i("Adicionou", "Adicionou saporra");
@@ -147,7 +154,7 @@ public class TelaSubProdutos extends Activity {
 	private List<Ingrediente> pegarIngredientesNaoMarcados() {
 		List<Ingrediente> i = new ArrayList<Ingrediente>();
 		for (AdapterChild a : listas.get(0).getChildren()) {
-			if (!a.getIngrediente().isChecked()) {
+			if (!a.isChecked()) {
 				i.add(a.getIngrediente());
 			}
 		}
@@ -157,7 +164,7 @@ public class TelaSubProdutos extends Activity {
 	private List<Adicional> pegarAdicionaisMarcados() {
 		List<Adicional> adic = new ArrayList<Adicional>();
 		for (AdapterChild a : listas.get(1).getChildren()) {
-			if (a.getAdicional().isChecked()) {
+			if (a.isChecked()) {
 				adic.add(a.getAdicional());
 			}
 		}
@@ -168,9 +175,9 @@ public class TelaSubProdutos extends Activity {
 		adicionarNaLista(v);
 
 		Intent i = getIntent();
-		i.setClass(TelaSubProdutos.this, MainActivity.class);
+		i.setClass(TelaSubProdutos.this, TelaPedido.class);
+		i.putExtra("atendimento", a);
 		i.putExtra("itens", itens);
 		startActivity(i);
 	}
-
 }

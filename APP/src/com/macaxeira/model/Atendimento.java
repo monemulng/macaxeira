@@ -6,14 +6,11 @@ import java.util.List;
 
 public class Atendimento implements Serializable {
 	private static final long serialVersionUID = 1L;
-
 	private int id;
-
 	private Mesa mesa;
-
 	private Situacao situacao;
-
-		private List<Pedido> pedidos;
+	private List<Pedido> pedidos;
+	private Pedido pedidoAtual;
 
 	public Atendimento() {
 	}
@@ -66,6 +63,14 @@ public class Atendimento implements Serializable {
 	
 	public String toString() {
 		return "Mesa " + mesa.getId() + ", Situação :" + situacao;
+	}
+
+	public Pedido getPedidoAtual() {
+		return pedidoAtual;
+	}
+
+	public void setPedidoAtual(Pedido pedidoAtual) {
+		this.pedidoAtual = pedidoAtual;
 	}
 
 }

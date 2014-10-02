@@ -24,7 +24,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 		
 		ContentValues value = new ContentValues();
 		value.put("nome", prod.getNome());
-		value.put("categoria_id", prod.getCodCategoria());
+		value.put("categoria_id", prod.getId());
 		db.insert("produto", null, value);
 	}
 	
@@ -41,7 +41,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 			String nomeProd = cursor.getString(1);
 			
 			Produto p = new Produto();
-			p.setCodProduto(codProd);
+			p.setId(codProd);
 			p.setNome(nomeProd);
 			
 			listaProd.add(p);
@@ -58,15 +58,15 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
 		db.execSQL("UPDATE produto " +
-				   "SET nome='" + prod.getNome() + "', categoria_id=" + prod.getCodCategoria() + " " +
-				   "WHERE _id=" + prod.getCodProduto() + ";");
+				   "SET nome='" + prod.getNome() + "', categoria_id=" + prod.getId() + " " +
+				   "WHERE _id=" + prod.getId() + ";");
 	}
 
 	public void deleteProduto(Produto prod) {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
 		db.execSQL("DELETE FROM produto " +
-				   "WHERE _id=" + prod.getCodProduto() + ";");
+				   "WHERE _id=" + prod.getId() + ";");
 	}
 	
 	@Override
@@ -75,7 +75,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 		
 		Produto p = new Produto();		
 		
-		p.setCodProduto(id);
+		p.setId(id);
 		
 		Cursor cursor = db.rawQuery("SELECT * FROM produto WHERE _id=" + id + ";" , null);
 		
@@ -97,7 +97,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 		
 		List<Produto> listaProd = new ArrayList<Produto>();
 		
-		Cursor cursor = db.rawQuery("SELECT * FROM produto WHERE categoria_id=" + categ.getCodCategoria() + ";" , null);
+		Cursor cursor = db.rawQuery("SELECT * FROM produto WHERE categoria_id=" + categ.getId() + ";" , null);
 		
 		cursor.moveToFirst();
 		
@@ -107,11 +107,11 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 			double precoProd = cursor.getDouble(2);
 			
 			Produto p = new Produto();
-			p.setCodProduto(idProd);
+			p.setId(idProd);
 			p.setNome(nomeProd);
 			p.setPreco(precoProd);
 			p.setIngredientes(ingDao.buscarIngredientePorProduto(p));
-			p.setAdicionais(adcDao.buscarAdicionalPorProduto(p));
+			p.setAdicionals(adcDao.buscarAdicionalPorProduto(p));
 			
 			listaProd.add(p);
 			

@@ -40,7 +40,7 @@ public class ProdutoDaoMock implements ProdutoDAO {
 
 	@Override
 	public List<Produto> buscarProdutoPorCategoria(Categoria categ) {
-
+		/*
 		ArrayList<Produto> produtos = new ArrayList<Produto>();
 
 		// prdutos disponíveis no banco
@@ -55,8 +55,8 @@ public class ProdutoDaoMock implements ProdutoDAO {
 		Produto p5 = new Produto();
 		Produto p6 = new Produto();
 		Produto p7 = new Produto();
-		Produto p8 = new Produto();
-		
+		Produto p8 = new Produto();*/
+		/*
 			p1.setNome("X-Bacon");
 			p1.setCodCategoria(1);
 			p1.setCodProduto(1);
@@ -167,14 +167,14 @@ public class ProdutoDaoMock implements ProdutoDAO {
 		produtos.add(p8);
 		produtos.add(p8);
 		produtos.add(p8);
-
-		return produtos;
-
+*/
+		//return produtos;
+		return null;
 	}
 
 	@Override
 	public Produto buscarProdutoPorId(int id) {
-		if(id == 1){
+		/*if(id == 1){
 		return null;
 		}
 		Produto p1 = new Produto();
@@ -223,7 +223,7 @@ public class ProdutoDaoMock implements ProdutoDAO {
 		p1.setIngredientes(listIngrediente);
 		
 		return p1;
-		
+		*/ return null;
 	}
 
 }

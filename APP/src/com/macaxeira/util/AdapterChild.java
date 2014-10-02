@@ -14,12 +14,12 @@ public class AdapterChild {
 	public AdapterChild(Ingrediente ingrediente){
 		this.ingrediente = ingrediente;
 		text1 = ingrediente.getNome();
-		isChecked = ingrediente.isChecked();
+		isChecked = true;
 	}
 	public AdapterChild(Adicional adicional){
 		this.adicional = adicional;
 		text1 = adicional.getNome();
-		isChecked = adicional.isChecked();
+		isChecked = false;
 	}
 	public AdapterChild(){
 		super();
@@ -46,12 +46,6 @@ public class AdapterChild {
 	
 	public void setChecked(boolean isChecked) {
 		this.isChecked = isChecked;
-		if(adicional!=null){
-			adicional.setChecked(isChecked);
-		}
-		if(ingrediente!=null){
-			ingrediente.setChecked(isChecked);
-		}
 	}
 
 	public Boolean isChecked() {

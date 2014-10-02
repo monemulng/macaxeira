@@ -6,13 +6,10 @@ import java.util.List;
 
 public class ItemPedido implements Serializable {
 	private static final long serialVersionUID = 1L;
-
 	private int id;
-
 	private List<Ingrediente> ingredientes;
-
 	private List<Adicional> adicionals;
-
+	
 	private Produto produto;
 
 	public ItemPedido() {
@@ -41,7 +38,13 @@ public class ItemPedido implements Serializable {
 	public void setAdicionals(List<Adicional> adicionals) {
 		this.adicionals = adicionals;
 	}
-
+	public double getPreco(){
+		double precoAdicionais = 0;
+		for(Adicional a:adicionals){
+			precoAdicionais+= a.getPreco();
+		}
+		return produto.getPreco()+precoAdicionais;
+	}
 
 	public Produto getProduto() {
 		return this.produto;

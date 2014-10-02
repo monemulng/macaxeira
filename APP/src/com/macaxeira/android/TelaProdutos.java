@@ -13,20 +13,21 @@ import android.widget.ListView;
 
 import com.macaxeira.DAO.CategoriaDAO;
 import com.macaxeira.DAO.CategoriaDAOImpl;
+import com.macaxeira.model.Atendimento;
 import com.macaxeira.model.Categoria;
 import com.macaxeira.model.Produto;
 
 public class TelaProdutos extends Activity implements OnItemClickListener{
 	
-	ListView lista;
-	//private int cod;
+	private ListView lista;
+	private Atendimento a;
 	private CategoriaDAO catDao= new CategoriaDAOImpl();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tela_produtos);
-		
+		a = (Atendimento) getIntent().getExtras().getSerializable("atendimento");
 		int idCategoria = Integer.parseInt(getIntent().getExtras().getString("id"));
 		Categoria cat = catDao.buscarCategoriaPorId(idCategoria);
 
@@ -54,6 +55,7 @@ public class TelaProdutos extends Activity implements OnItemClickListener{
 		//Toast.makeText(MyApp.getAppContext(), "você clicou em: " + p, Toast.LENGTH_LONG).show();
 		
 		Intent intent = new Intent(TelaProdutos.this, TelaSubProdutos.class);
+		intent.putExtra("atendimento", a);
 		intent.putExtra("produto", p);
 		startActivity(intent);
 		

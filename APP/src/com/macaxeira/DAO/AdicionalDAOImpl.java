@@ -83,7 +83,7 @@ public class AdicionalDAOImpl implements AdicionalDAO {
 
 		Cursor cursor = db.rawQuery(
 				"SELECT * FROM produto_has_Adicional WHERE produto_id="
-						+ prod.getCodProduto() + ";", null);
+						+ prod.getId() + ";", null);
 
 		cursor.moveToFirst();
 
