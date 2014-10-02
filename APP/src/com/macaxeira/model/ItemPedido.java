@@ -3,38 +3,56 @@ package com.macaxeira.model;
 import java.io.Serializable;
 import java.util.List;
 
-public class ItemPedido implements Serializable{
-	
+
+public class ItemPedido implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private int id;
+
+	private List<Ingrediente> ingredientes;
+
+	private List<Adicional> adicionals;
+
 	private Produto produto;
-	private int idItemPedido;
-	private List<Ingrediente> ingredientesExcluidos;
-	private List<Adicional> adicionaisItem;
-	
-	public int getIdItemPedido() {
-		return idItemPedido;
+
+	public ItemPedido() {
 	}
-	public void setIdItemPedido(int idItemPedido) {
-		this.idItemPedido = idItemPedido;
+
+	public int getId() {
+		return this.id;
 	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public List<Ingrediente> getIngredientes() {
+		return this.ingredientes;
+	}
+
+	public void setIngredientes(List<Ingrediente> ingredientes) {
+		this.ingredientes = ingredientes;
+	}
+
+	public List<Adicional> getAdicionals() {
+		return this.adicionals;
+	}
+
+	public void setAdicionals(List<Adicional> adicionals) {
+		this.adicionals = adicionals;
+	}
+
+
 	public Produto getProduto() {
-		return produto;
+		return this.produto;
 	}
-	public void setProduto(Produto p) {
-		this.produto = p;
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
-	public List<Ingrediente> getIngredientesExcluidos() {
-		return ingredientesExcluidos;
-	}
-	public void setIngredientesExcluidos(List<Ingrediente> ingredientesExcluidos) {
-		this.ingredientesExcluidos = ingredientesExcluidos;
-	}
-	public List<Adicional> getAdicionaisItem() {
-		return adicionaisItem;
-	}
-	public void setAdicionaisItem(List<Adicional> adicionaisItem) {
-		this.adicionaisItem = adicionaisItem;
-	}
+	
 	public String toString() {
 		return produto.toString();
 	}
+
 }

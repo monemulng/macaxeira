@@ -3,15 +3,18 @@ package com.macaxeira.model;
 import java.io.Serializable;
 import java.util.List;
 
-
-public class Mesa implements Serializable {
+public class Situacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int id;
 
+	private String situacao;
+
 	private List<Atendimento> atendimentos;
 
-	public Mesa() {
+	private List<Pedido> pedidos;
+
+	public Situacao() {
 	}
 
 	public int getId() {
@@ -20,6 +23,14 @@ public class Mesa implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getSituacao() {
+		return this.situacao;
+	}
+
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
 	}
 
 	public List<Atendimento> getAtendimentos() {
@@ -32,19 +43,42 @@ public class Mesa implements Serializable {
 
 	public Atendimento addAtendimento(Atendimento atendimento) {
 		getAtendimentos().add(atendimento);
-		atendimento.setMesa(this);
+		atendimento.setSituacao(this);
 
 		return atendimento;
 	}
 
 	public Atendimento removeAtendimento(Atendimento atendimento) {
 		getAtendimentos().remove(atendimento);
-		atendimento.setMesa(null);
+		atendimento.setSituacao(null);
 
 		return atendimento;
 	}
 
-	public String toString() {
-		return "Mesa " + id;
+	public List<Pedido> getPedidos() {
+		return this.pedidos;
 	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
+	public Pedido addPedido(Pedido pedido) {
+		getPedidos().add(pedido);
+		pedido.setSituacao(this);
+
+		return pedido;
+	}
+
+	public Pedido removePedido(Pedido pedido) {
+		getPedidos().remove(pedido);
+		pedido.setSituacao(null);
+
+		return pedido;
+	}
+	
+	public String toString() {
+		return situacao;
+	}
+
 }

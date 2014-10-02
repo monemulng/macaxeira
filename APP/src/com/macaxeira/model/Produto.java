@@ -1,73 +1,120 @@
 package com.macaxeira.model;
 
-
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.List;
 
-import com.macaxeira.model.Ingrediente;
-
 public class Produto implements Serializable {
-
-
 	private static final long serialVersionUID = 1L;
+
+	private int id;
+
+	private Timestamp dataUpdate;
+
+	private byte del;
+
 	private String nome;
-	private int codProduto;
-	private int codCategoria;
+
 	private double preco;
+
+	private List<Adicional> adicionals;
+
 	private List<Ingrediente> ingredientes;
-	private List<Adicional> adicionais;
-	
-	public Produto(){
-		super();
+
+	private List<ItemPedido> itemPedidos;
+
+	private Categoria categoria;
+
+	public Produto() {
 	}
 
-
-	public double getPreco() {
-		return preco;
-	}
-	public void setPreco(double preco) {
-		this.preco = preco;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public int getId() {
+		return this.id;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
 
-	public List<Adicional> getAdicionais() {
-		return adicionais;
+	public Timestamp getDataUpdate() {
+		return this.dataUpdate;
 	}
-	public void setAdicionais(List<Adicional> adicionais) {
-		this.adicionais = adicionais;
+
+	public void setDataUpdate(Timestamp dataUpdate) {
+		this.dataUpdate = dataUpdate;
 	}
-	public List<Ingrediente> getIngredientes() {
-		return ingredientes;
+
+	public byte getDel() {
+		return this.del;
 	}
-	public void setIngredientes(List<Ingrediente> ingredientes) {
-		this.ingredientes = ingredientes;
+
+	public void setDel(byte del) {
+		this.del = del;
 	}
+
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getCodProduto() {
-		return codProduto;
+
+	public double getPreco() {
+		return this.preco;
 	}
-	public void setCodProduto(int codProduto) {
-		this.codProduto = codProduto;
+
+	public void setPreco(double preco) {
+		this.preco = preco;
 	}
-	public int getCodCategoria() {
-		return codCategoria;
+
+	public List<Adicional> getAdicionals() {
+		return this.adicionals;
 	}
-	public void setCodCategoria(int codCategoria) {
-		this.codCategoria = codCategoria;
+
+	public void setAdicionals(List<Adicional> adicionals) {
+		this.adicionals = adicionals;
 	}
-	
-	@Override
+
+	public List<Ingrediente> getIngredientes() {
+		return this.ingredientes;
+	}
+
+	public void setIngredientes(List<Ingrediente> ingredientes) {
+		this.ingredientes = ingredientes;
+	}
+
+	public List<ItemPedido> getItemPedidos() {
+		return this.itemPedidos;
+	}
+
+	public void setItemPedidos(List<ItemPedido> itemPedidos) {
+		this.itemPedidos = itemPedidos;
+	}
+
+	public ItemPedido addItemPedido(ItemPedido itemPedido) {
+		getItemPedidos().add(itemPedido);
+		itemPedido.setProduto(this);
+
+		return itemPedido;
+	}
+
+	public ItemPedido removeItemPedido(ItemPedido itemPedido) {
+		getItemPedidos().remove(itemPedido);
+		itemPedido.setProduto(null);
+
+		return itemPedido;
+	}
+
+	public Categoria getCategoria() {
+		return this.categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
 	public String toString() {
-		// TODO Auto-generated method stub
 		return nome;
 	}
-	
 }

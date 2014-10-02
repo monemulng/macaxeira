@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 
-public class Categoria implements Serializable {
+public class Cozinheiro implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int id;
@@ -16,9 +16,11 @@ public class Categoria implements Serializable {
 
 	private String nome;
 
-	private List<Produto> produtos;
+	private Usuario usuario;
 
-	public Categoria() {
+	private List<Pedido> pedidos;
+
+	public Cozinheiro() {
 	}
 
 	public int getId() {
@@ -53,26 +55,34 @@ public class Categoria implements Serializable {
 		this.nome = nome;
 	}
 
-	public List<Produto> getProdutos() {
-		return this.produtos;
+	public Usuario getUsuario() {
+		return this.usuario;
 	}
 
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public Produto addProduto(Produto produto) {
-		getProdutos().add(produto);
-		produto.setCategoria(this);
-
-		return produto;
+	public List<Pedido> getPedidos() {
+		return this.pedidos;
 	}
 
-	public Produto removeProduto(Produto produto) {
-		getProdutos().remove(produto);
-		produto.setCategoria(null);
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 
-		return produto;
+	public Pedido addPedido(Pedido pedido) {
+		getPedidos().add(pedido);
+		pedido.setCozinheiro(this);
+
+		return pedido;
+	}
+
+	public Pedido removePedido(Pedido pedido) {
+		getPedidos().remove(pedido);
+		pedido.setCozinheiro(null);
+
+		return pedido;
 	}
 	
 	public String toString() {
