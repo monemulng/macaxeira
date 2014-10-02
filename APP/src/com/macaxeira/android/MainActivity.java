@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		numeroMesa = (EditText) findViewById(R.id.mesa);
+		numeroMesa = (EditText) findViewById(R.id.mesaNumero);
 
 		criandoAtendimento();
 
@@ -48,13 +48,15 @@ public class MainActivity extends Activity {
 				a = (Atendimento) getIntent().getExtras().getSerializable(
 						"atendimento");
 				m = a.getMesa();
-				numeroMesa.setText(""+m.getId());
-			} else {
-				a = new Atendimento();
-				m = new Mesa();
-				a.setMesa(m);
-				m.addAtendimento(a);
+				numeroMesa.setText("" + m.getId());
+
 			}
+		} else {
+			a = new Atendimento();
+			m = new Mesa();
+			m.setId(0);
+			a.setMesa(m);
+			m.addAtendimento(a);
 		}
 	}
 
@@ -67,13 +69,20 @@ public class MainActivity extends Activity {
 	public void escolheCategoria(View v) {
 
 		if (m.getId() == 0) {
-			m.setId(Integer.parseInt(numeroMesa.getText().toString()));
+			if (numeroMesa.getText().toString().equals("")) {
+				Toast.makeText(this, "Digite o numero da mesa!",
+						Toast.LENGTH_SHORT).show();
+			} else {
+				m.setId(Integer.parseInt(numeroMesa.getText().toString()));
+
+				Intent intent = new Intent(MainActivity.this,
+						TelaProdutos.class);
+				intent.putExtra("atendimento", a);
+				intent.putExtra("id", v.getContentDescription());
+				startActivity(intent);
+			}
 		}
 
-		Intent intent = new Intent(MainActivity.this, TelaProdutos.class);
-		intent.putExtra("atendimento", a);
-		intent.putExtra("id", v.getContentDescription());
-		startActivity(intent);
 	}
 
 	public void buscar(View v) {
@@ -86,6 +95,7 @@ public class MainActivity extends Activity {
 					.show();
 		} else {
 			Intent intent = new Intent(MainActivity.this, TelaSubProdutos.class);
+			intent.putExtra("atendimento", a);
 			intent.putExtra("produto", p);
 			startActivity(intent);
 		}

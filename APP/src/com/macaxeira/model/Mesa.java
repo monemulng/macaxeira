@@ -1,6 +1,7 @@
 package com.macaxeira.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -9,7 +10,7 @@ public class Mesa implements Serializable {
 
 	private int id;
 
-	private List<Atendimento> atendimentos;
+	private List<Atendimento> atendimentos = new ArrayList<Atendimento>();
 
 	public Mesa() {
 	}

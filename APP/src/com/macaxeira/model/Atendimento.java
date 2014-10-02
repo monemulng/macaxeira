@@ -1,6 +1,7 @@
 package com.macaxeira.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -9,7 +10,7 @@ public class Atendimento implements Serializable {
 	private int id;
 	private Mesa mesa;
 	private Situacao situacao;
-	private List<Pedido> pedidos;
+	private List<Pedido> pedidos = new ArrayList<Pedido>();
 	private Pedido pedidoAtual;
 
 	public Atendimento() {

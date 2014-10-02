@@ -43,8 +43,8 @@ public class TelaPedido extends Activity implements OnItemClickListener {
 		numPedido = (TextView) findViewById(R.id.numPedido);
 		listaPedidos = (ListView) findViewById(R.id.listaPedido);
 		
-		preco.setText(""+pegarPrecoTotal());
-		mesa.setText(""+a.getMesa().getId());
+		preco.setText("Preço total: "+pegarPrecoTotal());
+		mesa.setText("Mesa :"+a.getMesa().getId());
 		numPedido.setText("Pedido: "+ a.getPedidoAtual().getId());
 		
 		ArrayAdapter <ItemPedido> filelist = null;
