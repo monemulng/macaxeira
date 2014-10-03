@@ -1,11 +1,9 @@
 package com.macaxeira.android;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import org.w3c.dom.Text;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -18,7 +16,6 @@ import android.widget.TextView;
 import com.macaxeira.model.Atendimento;
 import com.macaxeira.model.ItemPedido;
 import com.macaxeira.model.Pedido;
-import com.macaxeira.model.Produto;
 
 public class TelaPedido extends Activity implements OnItemClickListener {
 
@@ -71,7 +68,6 @@ public class TelaPedido extends Activity implements OnItemClickListener {
 			//Setar o id pelo ultimo adicionado no banco;
 			p.setItemPedidos(itens);
 			a.setPedidoAtual(p);
-			a.addPedido(p);
 			
 		}else{
 			p = a.getPedidoAtual();
@@ -86,7 +82,13 @@ public class TelaPedido extends Activity implements OnItemClickListener {
 		return true;
 	}
 
-
+	public void adicionarMaisProdutos(View v){
+		Intent i = new Intent(this, MainActivity.class);
+		a.setPedidoAtual(p);
+		i.putExtra("atendimento", a);
+		startActivity(i);
+		
+	}
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub

@@ -6,21 +6,14 @@ import java.util.List;
 
 public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	private int id;
-
 	private String nomeCliente;
-
 	private List<ItemPedido> itemPedidos;
-
 	private Atendente atendente;
-
 	private Atendimento atendimento;
-
 	private Cozinheiro cozinheiro;
-
 	private Situacao situacao;
-
 	public Pedido() {
 	}
 

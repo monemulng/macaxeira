@@ -67,26 +67,30 @@ public class MainActivity extends Activity {
 	}
 
 	public void escolheCategoria(View v) {
-
+		
 		if (m.getId() == 0) {
-			if (numeroMesa.getText().toString().equals("")) {
+			if (numeroMesa.getText().toString().equals("")) {	
 				Toast.makeText(this, "Digite o numero da mesa!",
 						Toast.LENGTH_SHORT).show();
 			} else {
 				m.setId(Integer.parseInt(numeroMesa.getText().toString()));
-
 				Intent intent = new Intent(MainActivity.this,
 						TelaProdutos.class);
 				intent.putExtra("atendimento", a);
 				intent.putExtra("id", v.getContentDescription());
 				startActivity(intent);
 			}
+		}else{
+			Intent intent = new Intent(MainActivity.this,
+					TelaProdutos.class);
+			intent.putExtra("atendimento", a);
+			intent.putExtra("id", v.getContentDescription());
+			startActivity(intent);
 		}
 
 	}
 
 	public void buscar(View v) {
-
 		s = (SearchView) v;
 		Produto p = prodDao.buscarProdutoPorId(Integer.parseInt(s.getQuery()
 				.toString()));
