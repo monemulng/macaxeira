@@ -23,5 +23,6 @@
     <string name="pedido">Pedido:</string>
     <string name="finalizar">Finalizar</string>
     <string name="enviar">Enviar</string>
+    <string name="title_activity_http_activity_teste">HttpActivityTeste</string>
 
 </resources>

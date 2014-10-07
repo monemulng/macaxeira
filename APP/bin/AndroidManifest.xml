@@ -55,6 +55,16 @@
             android:label="@string/title_activity_tela_pedido"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.macaxeira.android.HttpActivityTeste"
+            android:label="@string/title_activity_http_activity_teste" >
+            <!-- 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+             -->
+        </activity>
     </application>
 
 </manifest>
