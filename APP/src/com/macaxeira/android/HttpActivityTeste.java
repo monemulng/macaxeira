@@ -1,4 +1,4 @@
-package com.macaxeira.http;
+package com.macaxeira.android;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.widget.EditText;
 
 import com.google.gson.Gson;
 import com.macaxeira.android.R;
+import com.macaxeira.http.GetHttpClientTask;
+import com.macaxeira.http.HttpClientListener;
 import com.macaxeira.model.Categoria;
 
 public class HttpActivityTeste extends Activity implements HttpClientListener{
@@ -33,8 +35,9 @@ public class HttpActivityTeste extends Activity implements HttpClientListener{
 		
 		task.addHttpClientListener(this);
 		
-		task.execute("http://10.2.236.191:8080/macaxeira/categoria/read?id="+categoriaId.getText().toString());
 		
+		
+		task.execute("http://10.2.236.191:8080/macaxeira/categoria/read?id="+categoriaId.getText().toString());
 		
 	}
 
