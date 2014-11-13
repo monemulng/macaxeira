@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -147,6 +148,9 @@ public class TelaSubProdutos extends Activity {
 		for (AdapterChild a : listas.get(1).getChildren()) {
 			a.setChecked(false);
 		}
+		
+		expListView.collapseGroup(0);
+		expListView.collapseGroup(1);
 		mudarPreco();
 
 	}

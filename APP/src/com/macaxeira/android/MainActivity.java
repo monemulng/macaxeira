@@ -47,11 +47,13 @@ public class MainActivity extends Activity {
 			if (getIntent().getExtras().getSerializable("atendimento") != null) {
 				a = (Atendimento) getIntent().getExtras().getSerializable(
 						"atendimento");
+				numeroMesa.setEnabled(false);
 				m = a.getMesa();
 				numeroMesa.setText("" + m.getId());
 
 			}
 		} else {
+			numeroMesa.setEnabled(true);
 			a = new Atendimento();
 			m = new Mesa();
 			m.setId(0);
