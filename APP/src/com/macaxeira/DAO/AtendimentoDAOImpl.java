@@ -1,19 +1,26 @@
 package com.macaxeira.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
 import com.macaxeira.model.Atendimento;
+import com.macaxeira.util.DatabaseHelper;
+import com.macaxeira.util.MyApp;
 
 public class AtendimentoDAOImpl implements AtendimentoDAO {
 
 	DatabaseHelper helper = new DatabaseHelper(MyApp.getAppContext());
+	
 	@Override
 	public void createAtendimento(Atendimento atend) {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
 		ContentValues value = new ContentValues();
-		value.put("nome", atend.getNome());
-		db.insert("ingrediente", null, value);
+		db.insert("atendimento", null, value);
 	}
 
 	@Override
@@ -31,11 +38,13 @@ public class AtendimentoDAOImpl implements AtendimentoDAO {
 			
 			Atendimento atend = new Atendimento();
 			atend.setId(codAtend);
-			atend.setNome(nomeAtend);
 			
 			listaAtend.add(atend);
 			
 			cursor.moveToNext();
+		}
+		
+		return listaAtend;
 	}
 
 	@Override
@@ -44,7 +53,6 @@ public class AtendimentoDAOImpl implements AtendimentoDAO {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		
 		db.execSQL("UPDATE atendimento " +
-				   "SET nome='" + atend.getNome() + " " +
 				   "WHERE _id=" + atend.getId() + ";");
 		
 	}
