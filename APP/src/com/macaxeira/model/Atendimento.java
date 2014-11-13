@@ -6,6 +6,8 @@ import java.util.List;
 
 
 public class Atendimento implements Serializable {
+	
+	
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private Mesa mesa;

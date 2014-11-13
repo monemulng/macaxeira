@@ -10,6 +10,8 @@ public class Mesa implements Serializable {
 
 	private int id;
 
+	
+	
 	private List<Atendimento> atendimentos = new ArrayList<Atendimento>();
 
 	public Mesa() {

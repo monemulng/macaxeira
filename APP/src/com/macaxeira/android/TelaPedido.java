@@ -2,6 +2,9 @@ package com.macaxeira.android;
 
 import java.util.ArrayList;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,12 +15,18 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.macaxeira.http.HttpClientListener;
+import com.macaxeira.http.InternetCheck;
+import com.macaxeira.http.PostHttpClientTask;
 import com.macaxeira.model.Atendimento;
+import com.macaxeira.model.Ingrediente;
 import com.macaxeira.model.ItemPedido;
 import com.macaxeira.model.Pedido;
 
-public class TelaPedido extends Activity implements OnItemClickListener {
+public class TelaPedido extends Activity implements OnItemClickListener, HttpClientListener {
 
 	private Pedido p;
 	private Atendimento a;
@@ -26,6 +35,7 @@ public class TelaPedido extends Activity implements OnItemClickListener {
 	private TextView numPedido;
 	private ListView listaPedidos;
 	private ArrayList<ItemPedido> itens;
+	private Gson gson = new Gson();
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,7 +57,7 @@ public class TelaPedido extends Activity implements OnItemClickListener {
 		ArrayAdapter <ItemPedido> filelist = null;
 		filelist = new ArrayAdapter<ItemPedido>(this, android.R.layout.simple_list_item_1, a.getPedidoAtual().getItemPedidos());
 		listaPedidos.setAdapter(filelist);
-		
+
 		listaPedidos.setOnItemClickListener(this);
 	}
 
@@ -89,10 +99,54 @@ public class TelaPedido extends Activity implements OnItemClickListener {
 		startActivity(i);
 		
 	}
+	
+	
+	public void enviar(View v){
+		
+		Ingrediente i = new Ingrediente();
+		i.setNome("ovo");
+		
+		String json = gson.toJson(i);
+		
+		if(InternetCheck.isConnected(this)){
+			PostHttpClientTask task = new PostHttpClientTask();
+		
+			NameValuePair values = new BasicNameValuePair("json",json);
+			task.addNameValuePair(values);
+		
+		
+			task.addHttpClientListener(this);
+			task.execute("http://localhost:8080/macaxeiraServer/json.php");
+		
+		}else{
+			Toast.makeText(this, "Sua conexão está desabilitada", Toast.LENGTH_LONG).show();
+		}
+		
+		
+		
+	}
+	
+	
+	@Override
+	public void updateHttpClientListener(String json) {
+		
+		
+		Ingrediente i = gson.fromJson(json, Ingrediente.class);
+		
+		i.getId();
+		
+		 
+	}
+	
+	
+	
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
 
 }
