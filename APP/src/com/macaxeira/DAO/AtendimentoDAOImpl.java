@@ -68,8 +68,31 @@ public class AtendimentoDAOImpl implements AtendimentoDAO {
 
 	@Override
 	public List<Atendimento> buscarAtendimentoPorMesa(int mesaId) {
-		// TODO Auto-generated method stub
-		return null;
+		SQLiteDatabase db = helper.getReadableDatabase();
+
+		List<Atendimento> listaAtend = new ArrayList<Atendimento>();
+		
+		Cursor cursor = db.rawQuery(
+				"SELECT * FROM Atendimento WHERE mesa_id="
+						+ mesaId + ";", null);
+
+		cursor.moveToFirst();
+
+		for (int i = 1; i <= cursor.getCount(); i++) {
+			int atendId = cursor.getInt(1);
+			int mesId = cursor.getInt(2);
+
+			Atendimento atend = new Atendimento();
+			
+			atend.setId(atendId);
+			//atend.setMesa(mesa)
+			listaAtend.add(atend);
+			cursor.moveToNext();
+		}
+		
+		cursor.close();
+		
+		return listaAtend;
 	}
 
 }
