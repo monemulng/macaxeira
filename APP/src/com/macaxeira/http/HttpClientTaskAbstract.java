@@ -30,7 +30,7 @@ public abstract class HttpClientTaskAbstract extends AsyncTask<String, String, S
 		return output;
 	}
 	
-	protected abstract String executaHttp(String string) throws Exception;
+	public abstract String executaHttp(String string) throws Exception;
 	
 	
 	protected static HttpClient getHttpClient(){
@@ -41,7 +41,6 @@ public abstract class HttpClientTaskAbstract extends AsyncTask<String, String, S
 			HttpConnectionParams.setSoTimeout(httpParams, HTTP_TIMEOUT);
 			ConnManagerParams.setTimeout(httpParams, HTTP_TIMEOUT);
 		}
-
 		return httpClient;
 	}
 

@@ -11,27 +11,39 @@ import org.apache.http.client.methods.HttpGet;
 
 public class GetHttpClientTask extends HttpClientTaskAbstract {
 	
-	protected String executaHttp(String url) throws Exception {
+	public String executaHttp(String url) throws Exception {
 		BufferedReader bufferreader = null;
-
+		
 		try{
 			HttpClient client = getHttpClient();
-			HttpGet httpGet = new HttpGet(url);
+			HttpGet httpGet = new HttpGet();
 			
 			httpGet.setURI(new URI(url));
 			HttpResponse httpResponse = client.execute(httpGet);
 			
 			
-			bufferreader = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent()));
+			bufferreader = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent(), "UTF-8"));
+			
+			StringBuilder response= new StringBuilder();
+			int c;
+			while ((c = bufferreader.read()) != -1) {
+			    //Since c is an integer, cast it to a char. If it isn't -1, it will be in the correct range of char.
+			    response.append( (char)c ) ;  
+			}
+			String resultado = response.toString();
+			
+			
+			/*bufferreader = new BufferedReader(new InputStreamReader());
 			StringBuffer stringBuffer = new StringBuffer("");
 			String line = "";
 			String LS = System.getProperty("line.separator");
 			while((line = bufferreader.readLine()) != null){
 				stringBuffer.append(line + LS);
 			}
+			
 			bufferreader.close();
-
-			String resultado = stringBuffer.toString();			
+			 */
+						
 			return resultado;
 
 		}finally{
