@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+
 public class MyApp extends Application{
 	private static Context context;
 
