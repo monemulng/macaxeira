@@ -9,7 +9,7 @@
     tools:context=".TelaProdutos" >
 
     <ListView
-        android:id="@+id/listaprodutos"
+        android:id="@+id/listaPedidos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"

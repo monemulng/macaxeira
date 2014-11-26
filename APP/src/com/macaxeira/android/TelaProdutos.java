@@ -33,7 +33,7 @@ public class TelaProdutos extends Activity implements OnItemClickListener{
 
 
 		ArrayAdapter <Produto> filelist = null;
-		lista = (ListView) findViewById(R.id.listaprodutos);
+		lista = (ListView) findViewById(R.id.listaPedidos);
 		filelist = new ArrayAdapter<Produto>(this, android.R.layout.simple_list_item_1, cat.getProdutos());
 		lista.setAdapter(filelist);
 		

@@ -24,5 +24,7 @@
     <string name="finalizar">Finalizar</string>
     <string name="enviar">Enviar</string>
     <string name="title_activity_http_activity_teste">HttpActivityTeste</string>
+    <string name="title_activity_tela_cozinheiro">TelaCozinheiro</string>
+    <string name="pedidos">"Pedidos: "</string>
 
 </resources>
