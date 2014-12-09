@@ -116,7 +116,7 @@ public class TelaPedido extends Activity implements OnItemClickListener, HttpCli
 		
 		
 			task.addHttpClientListener(this);
-			task.execute("http://localhost:8080/macaxeiraServer/json.php");
+			task.execute("http://10.2.231.87:8080/macaxeira/TesteIngrediente");
 		
 		}else{
 			Toast.makeText(this, "Sua conexão está desabilitada", Toast.LENGTH_LONG).show();
